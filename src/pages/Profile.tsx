@@ -1,14 +1,14 @@
 import Layout from '@/components/Layout';
 import { useAuth } from '@/contexts/AuthContext';
-import { announcements, formatPrice } from '@/data/mockData';
-import { BadgeCheck, Settings, LogOut, ChevronRight, Crown, MapPin, Link as LinkIcon } from 'lucide-react';
+import { announcements, formatPrice, pointsLevels } from '@/data/mockData';
+import { BadgeCheck, Settings, LogOut, ChevronRight, Crown, MapPin, Link as LinkIcon, Star, Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-
   const myAds = announcements.filter(a => a.author.id === user?.id);
+  const level = pointsLevels.find(l => l.name === user?.level) || pointsLevels[0];
 
   const handleLogout = () => {
     logout();
@@ -28,11 +28,27 @@ const Profile = () => {
           <p className="text-muted-foreground flex items-center justify-center gap-1">
             <MapPin size={16} /> {user?.city}, {user?.state}
           </p>
-          {user?.verified && (
-            <span className="inline-block mt-2 badge-verified px-4 py-1 rounded-full text-sm font-semibold">
-              ✓ Verificado por reconhecimento facial
+
+          {/* Level badge */}
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold" style={{ background: `${level.color}20`, color: level.color }}>
+              <Star size={14} fill="currentColor" /> Nível {user?.level} · {user?.points} pts
             </span>
-          )}
+          </div>
+
+          {/* Verification badges */}
+          <div className="flex items-center justify-center gap-2 mt-2 flex-wrap">
+            {user?.verified && (
+              <span className="inline-block badge-verified px-4 py-1 rounded-full text-sm font-semibold">
+                ✓ Verificado por reconhecimento facial
+              </span>
+            )}
+            {user?.bdmAccount && (
+              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold">
+                <Shield size={14} /> Conta BDM Ativa
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Plan */}
@@ -43,7 +59,7 @@ const Profile = () => {
           </div>
           <p className="text-sm text-muted-foreground mb-2">1 anúncio gratuito ativo</p>
           <button className="w-full min-h-touch bg-secondary text-secondary-foreground rounded-lg font-semibold text-base hover:opacity-90 transition-opacity">
-            Plano Profissional · R$ 69/mês · Em breve
+            Plano Profissional · R$ 69/mês
           </button>
         </div>
 
@@ -72,26 +88,22 @@ const Profile = () => {
 
         {/* Menu */}
         <div className="space-y-2">
-          <button
-            onClick={() => navigate('/links')}
-            className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors"
-          >
-            <LinkIcon size={20} className="text-muted-foreground" />
+          <button onClick={() => navigate('/orientadores')} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors">
+            <Crown size={20} className="text-secondary" />
             <span className="flex-1 text-left font-medium">Orientadores</span>
             <ChevronRight size={18} className="text-muted-foreground" />
           </button>
-          <button
-            onClick={() => navigate('/admin')}
-            className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors"
-          >
+          <button onClick={() => navigate('/links')} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors">
+            <LinkIcon size={20} className="text-muted-foreground" />
+            <span className="flex-1 text-left font-medium">Links Úteis</span>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </button>
+          <button onClick={() => navigate('/admin')} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors">
             <Settings size={20} className="text-muted-foreground" />
             <span className="flex-1 text-left font-medium">Painel Admin</span>
             <ChevronRight size={18} className="text-muted-foreground" />
           </button>
-          <button
-            onClick={handleLogout}
-            className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-destructive/10 transition-colors text-destructive"
-          >
+          <button onClick={handleLogout} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-destructive/10 transition-colors text-destructive">
             <LogOut size={20} />
             <span className="flex-1 text-left font-medium">Sair</span>
           </button>
