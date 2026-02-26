@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { orientadores, orientadorPosts, type Orientador } from '@/data/mockData';
-import { BadgeCheck, BookOpen } from 'lucide-react';
+import { BadgeCheck, GraduationCap } from 'lucide-react';
 import StoriesViewer from './StoriesViewer';
 
 const SEEN_KEY = 'bilu_stories_seen';
@@ -39,7 +39,7 @@ const OrientadoresStories = () => {
     <>
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-3">
-          <BookOpen size={18} className="text-primary" />
+          <GraduationCap size={18} className="text-primary" />
           <h2 className="text-lg font-bold">Orientadores Oficiais</h2>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
