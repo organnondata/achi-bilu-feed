@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, Crown } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, BookOpen } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
@@ -67,10 +67,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <div className="flex items-center gap-1 ml-auto">
             <button
               onClick={() => navigate('/orientadores')}
-              className="hidden sm:flex items-center gap-1.5 min-h-touch px-3 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 min-h-touch px-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
             >
-              <Crown size={18} className="text-secondary" />
-              <span className="text-sm font-bold text-secondary">Orientadores</span>
+              <BookOpen size={18} className="text-primary" />
+              <span className="text-sm font-semibold text-primary">Orientadores</span>
             </button>
 
             <PointsPanel />
@@ -151,10 +151,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <button
           onClick={() => navigate('/orientadores')}
           className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 ${
-            location.pathname === '/orientadores' ? 'bg-secondary/10 text-secondary' : 'text-muted-foreground hover:bg-muted'
+            location.pathname === '/orientadores' ? 'bg-accent text-primary' : 'text-muted-foreground hover:bg-muted'
           }`}
         >
-          <Crown size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
+          <BookOpen size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
           <span className="text-[11px] font-medium">Conteúdos</span>
         </button>
       </nav>
