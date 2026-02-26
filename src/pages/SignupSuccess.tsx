@@ -4,12 +4,16 @@ import { CheckCircle2, BadgeCheck, Shield } from 'lucide-react';
 
 const SignupSuccess = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { isAuthenticated, isFaceVerified } = useAuth();
 
   const handleGoToFeed = () => {
-    login();
     navigate('/feed', { replace: true });
   };
+
+  // Guard: must be authenticated and face verified
+  if (!isAuthenticated || !isFaceVerified) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4">
