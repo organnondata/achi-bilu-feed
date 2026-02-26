@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import { ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { z } from 'zod';
 
@@ -23,6 +24,7 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [form, setForm] = useState<FormData>({ name: '', email: '', phone: '', password: '', terms: false });
   const [errors, setErrors] = useState<FormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -43,6 +45,7 @@ const Signup = () => {
       setErrors(fieldErrors);
       return;
     }
+    login(); // Set authenticated before face validation
     navigate('/signup/face');
   };
 

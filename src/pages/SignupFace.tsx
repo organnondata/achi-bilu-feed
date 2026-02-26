@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
 import { Camera, CheckCircle2, Loader2, ArrowLeft } from 'lucide-react';
 
 type FaceStep = 'ready' | 'scanning' | 'success';
@@ -7,11 +8,19 @@ type FaceStep = 'ready' | 'scanning' | 'success';
 const SignupFace = () => {
   const [step, setStep] = useState<FaceStep>('ready');
   const navigate = useNavigate();
+  const { isAuthenticated, isFaceVerified, setFaceVerified } = useAuth();
+
+  // If already fully verified, go to feed
+  if (isAuthenticated && isFaceVerified) {
+    navigate('/feed', { replace: true });
+    return null;
+  }
 
   const startValidation = () => {
     setStep('scanning');
     setTimeout(() => {
       setStep('success');
+      setFaceVerified(true);
       setTimeout(() => navigate('/signup/success', { replace: true }), 1500);
     }, 2500);
   };
@@ -19,7 +28,7 @@ const SignupFace = () => {
   return (
     <div className="min-h-screen bg-foreground flex flex-col items-center justify-center px-4 relative">
       <button
-        onClick={() => navigate('/signup')}
+        onClick={() => navigate(-1)}
         className="absolute top-6 left-6 text-primary-foreground/70 min-h-touch min-w-touch flex items-center gap-2"
       >
         <ArrowLeft size={24} />
@@ -29,8 +38,10 @@ const SignupFace = () => {
         <h2 className="text-heading text-primary-foreground font-bold">
           {step === 'success' ? 'Identidade Validada!' : 'Validação Facial'}
         </h2>
-        <p className="text-primary-foreground/60 mt-1">
-          {step === 'success' ? 'Seu rosto foi verificado com sucesso' : 'Centralize seu rosto e toque em Validar'}
+        <p className="text-primary-foreground/60 mt-1 text-lg">
+          {step === 'success'
+            ? 'Seu rosto foi verificado com sucesso'
+            : 'Valide sua identidade para acessar a comunidade.'}
         </p>
       </div>
 

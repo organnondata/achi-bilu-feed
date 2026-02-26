@@ -9,7 +9,7 @@ const Login = () => {
   const [step, setStep] = useState<LoginStep>('bdm');
   const [bdmStatus, setBdmStatus] = useState<'idle' | 'creating' | 'done'>('idle');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, setFaceVerified } = useAuth();
 
   const createBdmAccount = () => {
     setBdmStatus('creating');
@@ -25,6 +25,7 @@ const Login = () => {
       setStep('success');
       setTimeout(() => {
         login();
+        setFaceVerified(true);
         navigate('/feed', { replace: true });
       }, 1500);
     }, 2500);
