@@ -20,11 +20,14 @@ const Splash = () => {
       <div className="absolute inset-0 splash-gradient" />
 
       <div className="relative z-10 text-center px-6 pb-16 pt-20 w-full max-w-md animate-fade-in-up">
+        <p className="text-sm text-primary-foreground/60 mb-4 tracking-widest uppercase font-medium">
+          Ecossistema Dakila
+        </p>
         <h1 className="text-display font-bold text-primary-foreground mb-2 leading-tight">
-          Achei Bilu
+          Bilu
         </h1>
         <p className="text-body-lg text-primary-foreground/80 mb-2 font-medium">
-          BDM Marketplace
+          Encontre Sabedoria aqui
         </p>
         <p className="text-body text-primary-foreground/70 mb-10">
           Compre, venda e conecte-se com sua comunidade

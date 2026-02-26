@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, Crown, BadgeCheck } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
@@ -51,7 +51,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             className="text-xl font-bold text-primary cursor-pointer whitespace-nowrap"
             onClick={() => navigate('/feed')}
           >
-            Achei Bilu
+            Bilu
           </h1>
 
           {/* Search */}
@@ -67,11 +67,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <div className="flex items-center gap-1 ml-auto">
             <button
               onClick={() => navigate('/orientadores')}
-              className="hidden sm:flex items-center gap-1.5 min-h-touch px-4 rounded-full badge-premium hover:opacity-90 transition-opacity"
+              className="hidden sm:flex items-center gap-1.5 min-h-touch px-4 rounded-full bg-accent text-primary hover:opacity-90 transition-opacity"
             >
-              <Crown size={18} />
+              <BookOpen size={18} />
               <span className="text-sm font-bold">Orientadores</span>
-              <span className="bg-card text-foreground text-[10px] px-1.5 py-0.5 rounded-full font-bold leading-none">OFICIAL</span>
+              <span className="bg-primary text-primary-foreground text-[10px] px-1.5 py-0.5 rounded-full font-bold leading-none">OFICIAL</span>
             </button>
 
             <PointsPanel />
@@ -152,12 +152,22 @@ const Layout = ({ children }: { children: ReactNode }) => {
         <button
           onClick={() => navigate('/orientadores')}
           className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 relative ${
-            location.pathname === '/orientadores' ? 'bg-secondary/20 text-secondary' : 'text-muted-foreground hover:bg-muted'
+            location.pathname === '/orientadores' ? 'bg-accent text-primary' : 'text-muted-foreground hover:bg-muted'
           }`}
         >
-          <Crown size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
-          <span className="text-[11px] font-bold">Conteúdos</span>
-          <span className="absolute top-1 right-0 bg-secondary text-secondary-foreground text-[8px] px-1 rounded-full font-bold leading-relaxed">✦</span>
+          <BookOpen size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
+          <span className="text-[11px] font-bold">Orientadores</span>
+          <span className="absolute top-1 right-0 bg-primary text-primary-foreground text-[8px] px-1 rounded-full font-bold leading-relaxed">✦</span>
+        </button>
+        {/* Premium link */}
+        <button
+          onClick={() => navigate('/premium')}
+          className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 ${
+            location.pathname === '/premium' ? 'bg-secondary/20 text-secondary' : 'text-muted-foreground hover:bg-muted'
+          }`}
+        >
+          <Star size={22} strokeWidth={location.pathname === '/premium' ? 2.5 : 2} />
+          <span className="text-[11px] font-bold text-secondary">Premium</span>
         </button>
       </nav>
 
