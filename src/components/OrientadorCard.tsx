@@ -16,7 +16,7 @@ const OrientadorCard = ({ post }: { post: OrientadorPost }) => {
   };
 
   return (
-    <article className="bg-card rounded-xl overflow-hidden feed-card-shadow">
+    <article className="bg-card rounded-xl overflow-hidden feed-card-shadow border border-secondary/20 relative">
       {/* Author header */}
       <div className="p-4 flex items-center gap-3">
         <img src={post.orientadorAvatar} alt={post.orientadorName} className="w-12 h-12 rounded-full object-cover" />

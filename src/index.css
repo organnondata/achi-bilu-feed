@@ -105,6 +105,14 @@
 }
 
 @layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   .feed-card-shadow {
     box-shadow: 0 2px 12px -2px hsl(20 25% 12% / 0.08);
   }

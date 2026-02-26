@@ -1,18 +1,29 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { announcements, orientadorPosts, states } from '@/data/mockData';
 import FeedCard from '@/components/FeedCard';
 import OrientadorCard from '@/components/OrientadorCard';
 import PremiumBanner from '@/components/PremiumBanner';
+import OrientadoresStories from '@/components/OrientadoresStories';
 import Layout from '@/components/Layout';
-import { SlidersHorizontal, X } from 'lucide-react';
+import { SlidersHorizontal, X, Crown } from 'lucide-react';
 
 type FeedMode = 'geral' | 'marketplace' | 'orientadores';
 
 const Feed = () => {
-  const [mode, setMode] = useState<FeedMode>('geral');
+  const [searchParams] = useSearchParams();
+  const initialMode = (searchParams.get('mode') as FeedMode) || 'geral';
+  const authorFilter = searchParams.get('author') || '';
+
+  const [mode, setMode] = useState<FeedMode>(initialMode);
   const [showFilters, setShowFilters] = useState(false);
   const [filterCategory, setFilterCategory] = useState('');
   const [filterState, setFilterState] = useState('');
+
+  useEffect(() => {
+    const m = searchParams.get('mode') as FeedMode;
+    if (m) setMode(m);
+  }, [searchParams]);
 
   const filtered = announcements.filter((ad) => {
     if (filterCategory && ad.category !== filterCategory) return false;
@@ -22,14 +33,41 @@ const Feed = () => {
 
   const hasFilters = filterCategory || filterState;
 
+  const filteredOrientadorPosts = useMemo(() => {
+    if (authorFilter) return orientadorPosts.filter(p => p.orientadorId === authorFilter);
+    return orientadorPosts;
+  }, [authorFilter]);
+
+  // Build prioritized feed: first 3 orientadores, then intercalate 1 orientador per 4 ads
   const socialFeed = useMemo(() => {
     if (mode !== 'geral') return null;
-    const items: { type: 'ad' | 'orientador'; data: any; sortDate: string }[] = [];
-    filtered.forEach(ad => items.push({ type: 'ad', data: ad, sortDate: ad.createdAt }));
-    orientadorPosts.forEach(post => items.push({ type: 'orientador', data: post, sortDate: post.createdAt }));
-    items.sort((a, b) => b.sortDate.localeCompare(a.sortDate));
-    return items;
-  }, [filtered, mode]);
+
+    const oPosts = [...filteredOrientadorPosts].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    const ads = [...filtered].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+
+    const result: { type: 'ad' | 'orientador'; data: any }[] = [];
+
+    // First 3 orientador posts
+    const firstThree = oPosts.splice(0, 3);
+    firstThree.forEach(p => result.push({ type: 'orientador', data: p }));
+
+    // Intercalate: 4 ads then 1 orientador
+    let adIdx = 0;
+    let oIdx = 0;
+    while (adIdx < ads.length || oIdx < oPosts.length) {
+      // 4 ads
+      for (let i = 0; i < 4 && adIdx < ads.length; i++, adIdx++) {
+        result.push({ type: 'ad', data: ads[adIdx] });
+      }
+      // 1 orientador
+      if (oIdx < oPosts.length) {
+        result.push({ type: 'orientador', data: oPosts[oIdx] });
+        oIdx++;
+      }
+    }
+
+    return result;
+  }, [filtered, filteredOrientadorPosts, mode]);
 
   return (
     <Layout>
@@ -37,21 +75,30 @@ const Feed = () => {
         {/* Premium banner */}
         <PremiumBanner />
 
+        {/* Orientadores Stories */}
+        {mode === 'geral' && <OrientadoresStories />}
+
         {/* Mode toggle - 3 tabs */}
         <div className="flex rounded-xl bg-muted p-1 mb-4">
           {([
-            { key: 'geral', label: 'Geral' },
-            { key: 'marketplace', label: 'Marketplace' },
-            { key: 'orientadores', label: 'Orientadores' },
+            { key: 'geral', label: 'Geral', badge: false },
+            { key: 'marketplace', label: 'Marketplace', badge: false },
+            { key: 'orientadores', label: 'Orientadores', badge: true },
           ] as const).map(tab => (
             <button
               key={tab.key}
               onClick={() => setMode(tab.key)}
-              className={`flex-1 min-h-touch rounded-lg font-bold text-base transition-all ${
+              className={`flex-1 min-h-touch rounded-lg font-bold text-base transition-all flex items-center justify-center gap-1.5 ${
                 mode === tab.key ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground'
               }`}
             >
+              {tab.badge && <Crown size={16} />}
               {tab.label}
+              {tab.badge && (
+                <span className="badge-premium text-[10px] px-1.5 py-0.5 rounded-full font-bold leading-none">
+                  OFICIAL
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -150,7 +197,7 @@ const Feed = () => {
               <FeedCard key={ad.id} ad={ad} />
             ))
           ) : (
-            orientadorPosts.map(post => (
+            filteredOrientadorPosts.map(post => (
               <OrientadorCard key={post.id} post={post} />
             ))
           )}
