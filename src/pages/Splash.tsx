@@ -13,14 +13,12 @@ const Splash = () => {
 
   return (
     <div className="min-h-screen relative flex flex-col items-center justify-end">
-      {/* Background image */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       <div className="absolute inset-0 splash-gradient" />
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6 pb-16 pt-20 w-full max-w-md animate-fade-in-up">
         <h1 className="text-display font-bold text-primary-foreground mb-2 leading-tight">
           Achei Bilu
@@ -32,12 +30,20 @@ const Splash = () => {
           Compre, venda e conecte-se com sua comunidade
         </p>
 
-        <button
-          onClick={() => navigate('/login')}
-          className="w-full min-h-[56px] bg-secondary text-secondary-foreground font-bold text-lg rounded-xl hover:opacity-90 transition-opacity"
-        >
-          Entrar
-        </button>
+        <div className="space-y-3">
+          <button
+            onClick={() => navigate('/login')}
+            className="w-full min-h-[56px] bg-secondary text-secondary-foreground font-bold text-lg rounded-xl hover:opacity-90 transition-opacity"
+          >
+            Entrar
+          </button>
+          <button
+            onClick={() => navigate('/signup')}
+            className="w-full min-h-[56px] border-2 border-primary-foreground/40 text-primary-foreground font-bold text-lg rounded-xl hover:border-primary-foreground/60 transition-colors"
+          >
+            Cadastrar
+          </button>
+        </div>
 
         <p className="text-sm text-primary-foreground/50 mt-6">
           Acesso seguro com validação facial

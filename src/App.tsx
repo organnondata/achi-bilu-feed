@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Splash from "./pages/Splash";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import SignupFace from "./pages/SignupFace";
+import SignupSuccess from "./pages/SignupSuccess";
 import Feed from "./pages/Feed";
 import Explore from "./pages/Explore";
 import AdDetail from "./pages/AdDetail";
@@ -31,6 +34,9 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Splash />} />
     <Route path="/login" element={<Login />} />
+    <Route path="/signup" element={<Signup />} />
+    <Route path="/signup/face" element={<SignupFace />} />
+    <Route path="/signup/success" element={<SignupSuccess />} />
     <Route path="/feed" element={<ProtectedRoute><Feed /></ProtectedRoute>} />
     <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>} />
     <Route path="/ad/:id" element={<ProtectedRoute><AdDetail /></ProtectedRoute>} />
