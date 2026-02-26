@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
-import { categories, states } from '@/data/mockData';
-import { Camera, ArrowRight, ArrowLeft, Check, ImagePlus } from 'lucide-react';
+import { categories, states, formatPrice } from '@/data/mockData';
+import { ArrowRight, ArrowLeft, Check, ImagePlus, Eye } from 'lucide-react';
 import { toast } from 'sonner';
+
+const conditions = ['Novo', 'Usado', 'Recondicionado'];
 
 const Publish = () => {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ const Publish = () => {
     title: '',
     description: '',
     price: '',
+    condition: '',
     city: '',
     state: '',
     images: [] as string[],
@@ -23,9 +26,10 @@ const Publish = () => {
 
   const canNext = () => {
     if (step === 1) return form.category && form.type;
-    if (step === 2) return true; // images optional in MVP
+    if (step === 2) return true;
     if (step === 3) return form.title && form.description;
     if (step === 4) return form.city && form.state;
+    if (step === 5) return true;
     return false;
   };
 
@@ -34,6 +38,8 @@ const Publish = () => {
     navigate('/feed');
   };
 
+  const totalSteps = 5;
+
   return (
     <Layout>
       <div className="px-4 pt-4 pb-4">
@@ -41,14 +47,14 @@ const Publish = () => {
 
         {/* Progress */}
         <div className="flex gap-2 mb-6">
-          {[1, 2, 3, 4].map(s => (
+          {Array.from({ length: totalSteps }, (_, i) => i + 1).map(s => (
             <div key={s} className={`h-1.5 flex-1 rounded-full transition-colors ${
               s <= step ? 'bg-primary' : 'bg-muted'
             }`} />
           ))}
         </div>
 
-        {/* Step 1: Category */}
+        {/* Step 1: Category + Subcategory */}
         {step === 1 && (
           <div className="animate-fade-in-up">
             <h3 className="text-lg font-semibold mb-3">O que você quer anunciar?</h3>
@@ -101,7 +107,7 @@ const Publish = () => {
           </div>
         )}
 
-        {/* Step 3: Details */}
+        {/* Step 3: Title + Description */}
         {step === 3 && (
           <div className="animate-fade-in-up space-y-4">
             <h3 className="text-lg font-semibold mb-1">Detalhes do anúncio</h3>
@@ -115,15 +121,23 @@ const Publish = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-muted-foreground mb-1 block">Descrição</label>
+              <label className="text-sm font-semibold text-muted-foreground mb-1 block">Descrição detalhada</label>
               <textarea
                 value={form.description}
                 onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
-                placeholder="Descreva seu anúncio em detalhes..."
-                rows={4}
+                placeholder="Descreva com o máximo de detalhes: estado de conservação, características, diferenciais..."
+                rows={6}
                 className="w-full px-4 py-3 rounded-xl border-2 border-border bg-card text-lg focus:border-primary focus:outline-none transition-colors resize-none"
               />
+              <p className="text-sm text-muted-foreground mt-1">{form.description.length} caracteres</p>
             </div>
+          </div>
+        )}
+
+        {/* Step 4: Price + Condition + Location */}
+        {step === 4 && (
+          <div className="animate-fade-in-up space-y-4">
+            <h3 className="text-lg font-semibold mb-1">Preço e Localização</h3>
             <div>
               <label className="text-sm font-semibold text-muted-foreground mb-1 block">Preço (R$)</label>
               <input
@@ -134,13 +148,22 @@ const Publish = () => {
                 className="w-full min-h-touch px-4 rounded-xl border-2 border-border bg-card text-lg focus:border-primary focus:outline-none transition-colors"
               />
             </div>
-          </div>
-        )}
-
-        {/* Step 4: Location */}
-        {step === 4 && (
-          <div className="animate-fade-in-up space-y-4">
-            <h3 className="text-lg font-semibold mb-1">Localização</h3>
+            <div>
+              <label className="text-sm font-semibold text-muted-foreground mb-2 block">Condição</label>
+              <div className="flex gap-2 flex-wrap">
+                {conditions.map(c => (
+                  <button
+                    key={c}
+                    onClick={() => setForm(f => ({ ...f, condition: c }))}
+                    className={`min-h-touch px-5 rounded-full border-2 font-medium transition-all ${
+                      form.condition === c ? 'border-primary bg-primary text-primary-foreground' : 'border-border'
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div>
               <label className="text-sm font-semibold text-muted-foreground mb-1 block">Cidade</label>
               <input
@@ -151,7 +174,7 @@ const Publish = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-semibold text-muted-foreground mb-1 block">Estado</label>
+              <label className="text-sm font-semibold text-muted-foreground mb-2 block">Estado</label>
               <div className="flex flex-wrap gap-2">
                 {states.map(st => (
                   <button
@@ -166,9 +189,56 @@ const Publish = () => {
                 ))}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Step 5: Review */}
+        {step === 5 && (
+          <div className="animate-fade-in-up">
+            <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+              <Eye size={22} /> Revisão do anúncio
+            </h3>
+
+            {/* Preview card */}
+            <div className="bg-card rounded-xl border-2 border-primary/20 overflow-hidden mb-4">
+              <div className="h-40 bg-muted flex items-center justify-center text-muted-foreground">
+                <ImagePlus size={40} />
+              </div>
+              <div className="p-4">
+                <h4 className="text-lg font-bold mb-1">{form.title || 'Título do anúncio'}</h4>
+                <p className="text-heading font-bold text-primary mb-2">
+                  {form.price ? formatPrice(Number(form.price)) : 'Consultar'}
+                </p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {form.city || 'Cidade'}, {form.state || 'Estado'} · {form.type || 'Tipo'}
+                  {form.condition && ` · ${form.condition}`}
+                </p>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {form.description || 'Descrição do anúncio...'}
+                </p>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <div className="bg-muted rounded-xl p-4 space-y-2">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Categoria</span>
+                <span className="font-semibold">{selectedCat?.label}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Tipo</span>
+                <span className="font-semibold">{form.type}</span>
+              </div>
+              {form.condition && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Condição</span>
+                  <span className="font-semibold">{form.condition}</span>
+                </div>
+              )}
+            </div>
 
             {/* Highlight upsell */}
-            <div className="bg-accent rounded-xl p-4 border border-primary/20">
+            <div className="bg-accent rounded-xl p-4 border border-primary/20 mt-4">
               <p className="font-semibold text-primary mb-1">✨ Quer destaque?</p>
               <p className="text-sm text-muted-foreground mb-2">
                 Coloque seu anúncio no topo do feed por 7 dias.
@@ -188,7 +258,7 @@ const Publish = () => {
               <ArrowLeft size={20} /> Voltar
             </button>
           )}
-          {step < 4 ? (
+          {step < totalSteps ? (
             <button
               onClick={() => canNext() && setStep(s => s + 1)}
               disabled={!canNext()}
@@ -199,8 +269,7 @@ const Publish = () => {
           ) : (
             <button
               onClick={handlePublish}
-              disabled={!canNext()}
-              className="flex-1 min-h-[56px] bg-primary text-primary-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-40"
+              className="flex-1 min-h-[56px] bg-primary text-primary-foreground rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
             >
               <Check size={20} /> Publicar Anúncio
             </button>
