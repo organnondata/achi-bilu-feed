@@ -75,8 +75,8 @@ const Feed = () => {
         {/* Premium banner */}
         <PremiumBanner />
 
-        {/* Orientadores Stories */}
-        {mode === 'geral' && <OrientadoresStories />}
+        {/* Orientadores Stories - always visible */}
+        <OrientadoresStories />
 
         {/* Mode toggle - 3 tabs */}
         <div className="flex rounded-xl bg-muted p-1 mb-4">
