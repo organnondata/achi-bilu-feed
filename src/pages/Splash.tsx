@@ -12,27 +12,35 @@ const Splash = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-end">
+    <div className="min-h-screen relative flex flex-col">
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       <div className="absolute inset-0 splash-gradient" />
 
-      <div className="relative z-10 text-center px-6 pb-16 pt-20 w-full max-w-md animate-fade-in-up">
-        <p className="text-sm text-primary-foreground/60 mb-4 tracking-widest uppercase font-medium">
+      {/* Institutional top bar */}
+      <div className="relative z-10 pt-10 text-center">
+        <p className="text-[11px] text-primary-foreground/50 tracking-[0.3em] uppercase font-medium">
           Ecossistema Dakila
         </p>
-        <h1 className="text-display font-bold text-primary-foreground mb-2 leading-tight">
+      </div>
+
+      {/* Hero center */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 w-full max-w-md mx-auto">
+        <h1 className="text-5xl font-bold text-primary-foreground mb-3 leading-none">
           Bilu
         </h1>
-        <p className="text-body-lg text-primary-foreground/80 mb-2 font-medium">
+        <p className="text-xl text-primary-foreground/85 mb-2 font-medium">
           Encontre Sabedoria aqui
         </p>
-        <p className="text-body text-primary-foreground/70 mb-10">
+        <p className="text-base text-primary-foreground/60">
           Compre, venda e conecte-se com sua comunidade
         </p>
+      </div>
 
+      {/* Buttons bottom */}
+      <div className="relative z-10 px-6 pb-16 w-full max-w-md mx-auto animate-fade-in-up">
         <div className="space-y-3">
           <button
             onClick={() => navigate('/login')}

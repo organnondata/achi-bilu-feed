@@ -47,10 +47,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <header className="sticky top-0 z-40 bg-card border-b border-border px-4 py-2 feed-card-shadow">
         <div className="max-w-5xl mx-auto flex items-center gap-3">
           {/* Logo */}
-          <div className="flex flex-col leading-none cursor-pointer" onClick={() => navigate('/feed')}>
-            <span className="text-[10px] text-muted-foreground tracking-widest uppercase font-medium">Ecossistema Dakila</span>
-            <span className="text-xl font-bold text-primary">Bilu</span>
-          </div>
+          <h1
+            className="text-xl font-bold text-primary cursor-pointer whitespace-nowrap"
+            onClick={() => navigate('/feed')}
+          >
+            Bilu
+          </h1>
 
           {/* Search */}
           <div className="flex-1 max-w-md mx-auto hidden sm:block">
