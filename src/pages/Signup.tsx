@@ -59,11 +59,11 @@ const Signup = () => {
         <h1 className="text-xl font-bold text-primary">Criar Conta</h1>
       </header>
 
-      <div className="flex-1 px-4 py-6 max-w-md mx-auto w-full">
-        <h2 className="text-heading font-bold mb-1">Cadastre-se</h2>
-        <p className="text-muted-foreground mb-6">Preencha seus dados para criar sua conta no Achei Bilu</p>
+      <div className="flex-1 px-4 py-8 max-w-md mx-auto w-full">
+        <h2 className="text-[28px] font-bold mb-1">Criar sua conta</h2>
+        <p className="text-muted-foreground text-base mb-8">Acesso seguro com validação facial</p>
 
-        <div className="space-y-4">
+        <div className="space-y-5">
           {/* Nome */}
           <div>
             <label className="block text-base font-semibold mb-1.5">Nome completo</label>
