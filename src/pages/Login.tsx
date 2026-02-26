@@ -3,31 +3,31 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Camera, CheckCircle2, Loader2, ArrowLeft, Shield } from 'lucide-react';
 
-type LoginStep = 'camera' | 'scanning' | 'success' | 'bdm';
+type LoginStep = 'bdm' | 'camera' | 'scanning' | 'success';
 
 const Login = () => {
-  const [step, setStep] = useState<LoginStep>('camera');
+  const [step, setStep] = useState<LoginStep>('bdm');
   const [bdmStatus, setBdmStatus] = useState<'idle' | 'creating' | 'done'>('idle');
   const navigate = useNavigate();
   const { login } = useAuth();
-
-  const startValidation = () => {
-    setStep('scanning');
-    setTimeout(() => {
-      setStep('success');
-      setTimeout(() => setStep('bdm'), 1500);
-    }, 2500);
-  };
 
   const createBdmAccount = () => {
     setBdmStatus('creating');
     setTimeout(() => {
       setBdmStatus('done');
+      setTimeout(() => setStep('camera'), 1500);
+    }, 2000);
+  };
+
+  const startValidation = () => {
+    setStep('scanning');
+    setTimeout(() => {
+      setStep('success');
       setTimeout(() => {
         login();
         navigate('/feed', { replace: true });
       }, 1500);
-    }, 2000);
+    }, 2500);
   };
 
   return (
@@ -39,6 +39,49 @@ const Login = () => {
         <ArrowLeft size={24} />
       </button>
 
+      {/* Step 1: BDM Account */}
+      {step === 'bdm' && (
+        <div className="text-center animate-fade-in-up max-w-sm">
+          <Shield size={64} className="mx-auto mb-4 text-primary-foreground/60" />
+          <h2 className="text-heading text-primary-foreground font-bold mb-2">Conta BDM</h2>
+          <p className="text-primary-foreground/60 mb-6">
+            {bdmStatus === 'idle' && 'Para usar o Achei Bilu, é necessário vincular sua Conta BDM.'}
+            {bdmStatus === 'creating' && 'Criando sua conta BDM...'}
+            {bdmStatus === 'done' && 'Conta BDM ativa!'}
+          </p>
+
+          {bdmStatus === 'idle' && (
+            <div className="space-y-3">
+              <button
+                onClick={createBdmAccount}
+                className="w-full min-h-[56px] bg-primary text-primary-foreground font-bold text-lg rounded-xl hover:opacity-90 transition-opacity"
+              >
+                Criar Conta BDM
+              </button>
+              <button
+                onClick={createBdmAccount}
+                className="w-full min-h-[56px] border-2 border-primary-foreground/30 text-primary-foreground font-bold text-lg rounded-xl hover:border-primary-foreground/50 transition-colors"
+              >
+                Já tenho conta BDM
+              </button>
+            </div>
+          )}
+
+          {bdmStatus === 'creating' && (
+            <Loader2 size={32} className="animate-spin text-primary-foreground/60 mx-auto" />
+          )}
+
+          {bdmStatus === 'done' && (
+            <div className="animate-fade-in-up">
+              <CheckCircle2 size={48} className="text-verified mx-auto mb-2" />
+              <p className="text-xl font-bold text-verified">Conta BDM Ativa!</p>
+              <p className="text-primary-foreground/50 mt-1">Iniciando validação facial...</p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Steps 2-4: Facial validation */}
       {step !== 'bdm' && (
         <>
           <div className="text-center mb-8">
@@ -46,7 +89,7 @@ const Login = () => {
               {step === 'success' ? 'Verificado!' : 'Validação Facial'}
             </h2>
             <p className="text-primary-foreground/60 mt-1">
-              {step === 'success' ? 'Preparando sua conta...' : 'Posicione seu rosto no centro'}
+              {step === 'success' ? 'Entrando no Achei Bilu...' : 'Posicione seu rosto no centro'}
             </p>
           </div>
 
@@ -97,52 +140,10 @@ const Login = () => {
           {step === 'success' && (
             <div className="text-center animate-fade-in-up">
               <p className="text-xl font-bold text-verified">Verificado com sucesso!</p>
-              <p className="text-primary-foreground/50 mt-1">Configurando conta BDM...</p>
+              <p className="text-primary-foreground/50 mt-1">Entrando...</p>
             </div>
           )}
         </>
-      )}
-
-      {/* BDM Account Step */}
-      {step === 'bdm' && (
-        <div className="text-center animate-fade-in-up max-w-sm">
-          <Shield size={64} className={`mx-auto mb-4 ${bdmStatus === 'done' ? 'text-verified' : 'text-primary-foreground/60'}`} />
-          <h2 className="text-heading text-primary-foreground font-bold mb-2">Conta BDM</h2>
-          <p className="text-primary-foreground/60 mb-6">
-            {bdmStatus === 'idle' && 'Para usar o Achei Bilu, é necessário vincular sua Conta BDM.'}
-            {bdmStatus === 'creating' && 'Criando sua conta BDM...'}
-            {bdmStatus === 'done' && 'Conta BDM ativa!'}
-          </p>
-
-          {bdmStatus === 'idle' && (
-            <div className="space-y-3">
-              <button
-                onClick={createBdmAccount}
-                className="w-full min-h-[56px] bg-primary text-primary-foreground font-bold text-lg rounded-xl hover:opacity-90 transition-opacity"
-              >
-                Criar Conta BDM
-              </button>
-              <button
-                onClick={createBdmAccount}
-                className="w-full min-h-[56px] border-2 border-primary-foreground/30 text-primary-foreground font-bold text-lg rounded-xl hover:border-primary-foreground/50 transition-colors"
-              >
-                Já tenho conta BDM
-              </button>
-            </div>
-          )}
-
-          {bdmStatus === 'creating' && (
-            <Loader2 size={32} className="animate-spin text-primary-foreground/60 mx-auto" />
-          )}
-
-          {bdmStatus === 'done' && (
-            <div className="animate-fade-in-up">
-              <CheckCircle2 size={48} className="text-verified mx-auto mb-2" />
-              <p className="text-xl font-bold text-verified">Conta BDM Ativa!</p>
-              <p className="text-primary-foreground/50 mt-1">Entrando no Achei Bilu...</p>
-            </div>
-          )}
-        </div>
       )}
     </div>
   );
