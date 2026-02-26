@@ -1,10 +1,14 @@
-import { useState } from 'react';
-import { announcements, states } from '@/data/mockData';
+import { useState, useMemo } from 'react';
+import { announcements, orientadorPosts, states } from '@/data/mockData';
 import FeedCard from '@/components/FeedCard';
+import OrientadorCard from '@/components/OrientadorCard';
 import Layout from '@/components/Layout';
 import { SlidersHorizontal, X } from 'lucide-react';
 
+type FeedMode = 'social' | 'marketplace';
+
 const Feed = () => {
+  const [mode, setMode] = useState<FeedMode>('social');
   const [showFilters, setShowFilters] = useState(false);
   const [filterCategory, setFilterCategory] = useState('');
   const [filterState, setFilterState] = useState('');
@@ -17,9 +21,39 @@ const Feed = () => {
 
   const hasFilters = filterCategory || filterState;
 
+  // Interleave ads and orientador posts for social feed
+  const socialFeed = useMemo(() => {
+    if (mode === 'marketplace') return null;
+    const items: { type: 'ad' | 'orientador'; data: any; sortDate: string }[] = [];
+    filtered.forEach(ad => items.push({ type: 'ad', data: ad, sortDate: ad.createdAt }));
+    orientadorPosts.forEach(post => items.push({ type: 'orientador', data: post, sortDate: post.createdAt }));
+    items.sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+    return items;
+  }, [filtered, mode]);
+
   return (
     <Layout>
       <div className="px-4 pt-4">
+        {/* Mode toggle */}
+        <div className="flex rounded-xl bg-muted p-1 mb-4">
+          <button
+            onClick={() => setMode('social')}
+            className={`flex-1 min-h-touch rounded-lg font-bold text-base transition-all ${
+              mode === 'social' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground'
+            }`}
+          >
+            Feed Social
+          </button>
+          <button
+            onClick={() => setMode('marketplace')}
+            className={`flex-1 min-h-touch rounded-lg font-bold text-base transition-all ${
+              mode === 'marketplace' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground'
+            }`}
+          >
+            Marketplace
+          </button>
+        </div>
+
         {/* Filter toggle */}
         <div className="flex items-center gap-2 mb-4">
           <button
@@ -31,7 +65,7 @@ const Feed = () => {
             <SlidersHorizontal size={18} /> Filtros
           </button>
           {hasFilters && (
-            <button 
+            <button
               onClick={() => { setFilterCategory(''); setFilterState(''); }}
               className="min-h-touch px-3 rounded-full text-muted-foreground hover:text-foreground"
             >
@@ -52,6 +86,7 @@ const Feed = () => {
                   { value: 'vehicles', label: 'Veículos' },
                   { value: 'realestate', label: 'Imóveis' },
                   { value: 'services', label: 'Serviços' },
+                  { value: 'products', label: 'Produtos' },
                 ].map((cat) => (
                   <button
                     key={cat.value}
@@ -94,12 +129,22 @@ const Feed = () => {
           </div>
         )}
 
-        {/* Feed */}
+        {/* Feed content */}
         <div className="space-y-4 pb-4">
-          {filtered.map((ad) => (
-            <FeedCard key={ad.id} ad={ad} />
-          ))}
-          {filtered.length === 0 && (
+          {mode === 'social' && socialFeed ? (
+            socialFeed.map(item =>
+              item.type === 'ad' ? (
+                <FeedCard key={item.data.id} ad={item.data} />
+              ) : (
+                <OrientadorCard key={item.data.id} post={item.data} />
+              )
+            )
+          ) : (
+            filtered.map((ad) => (
+              <FeedCard key={ad.id} ad={ad} />
+            ))
+          )}
+          {filtered.length === 0 && mode === 'marketplace' && (
             <div className="text-center py-16 text-muted-foreground">
               <p className="text-lg">Nenhum anúncio encontrado</p>
               <p className="text-sm mt-1">Tente mudar os filtros</p>

@@ -41,6 +41,7 @@
     --category-vehicles: 210 60% 50%;
     --category-realestate: 153 45% 35%;
     --category-services: 38 85% 50%;
+    --category-products: 280 50% 55%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -141,6 +142,11 @@
   .category-services {
     background: hsl(var(--category-services) / 0.1);
     color: hsl(var(--category-services));
+  }
+
+  .category-products {
+    background: hsl(var(--category-products) / 0.1);
+    color: hsl(var(--category-products));
   }
 
   .bottom-nav-safe {
