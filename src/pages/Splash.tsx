@@ -56,7 +56,7 @@ const Splash = () => {
           </button>
         </div>
 
-        <p className="text-sm text-primary-foreground/50 mt-6">
+        <p className="text-sm text-primary-foreground/50 mt-6 text-center">
           Acesso seguro com validação facial
         </p>
       </div>
