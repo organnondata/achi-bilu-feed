@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, BookOpen } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, Crown, BadgeCheck } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
@@ -67,10 +67,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <div className="flex items-center gap-1 ml-auto">
             <button
               onClick={() => navigate('/orientadores')}
-              className="hidden sm:flex items-center gap-1.5 min-h-touch px-3 rounded-full bg-accent hover:bg-accent/80 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 min-h-touch px-4 rounded-full badge-premium hover:opacity-90 transition-opacity"
             >
-              <BookOpen size={18} className="text-primary" />
-              <span className="text-sm font-semibold text-primary">Orientadores</span>
+              <Crown size={18} />
+              <span className="text-sm font-bold">Orientadores</span>
+              <span className="bg-card text-foreground text-[10px] px-1.5 py-0.5 rounded-full font-bold leading-none">OFICIAL</span>
             </button>
 
             <PointsPanel />
@@ -150,12 +151,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
         {/* Orientadores link in sidebar */}
         <button
           onClick={() => navigate('/orientadores')}
-          className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 ${
-            location.pathname === '/orientadores' ? 'bg-accent text-primary' : 'text-muted-foreground hover:bg-muted'
+          className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 relative ${
+            location.pathname === '/orientadores' ? 'bg-secondary/20 text-secondary' : 'text-muted-foreground hover:bg-muted'
           }`}
         >
-          <BookOpen size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
-          <span className="text-[11px] font-medium">Conteúdos</span>
+          <Crown size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
+          <span className="text-[11px] font-bold">Conteúdos</span>
+          <span className="absolute top-1 right-0 bg-secondary text-secondary-foreground text-[8px] px-1 rounded-full font-bold leading-relaxed">✦</span>
         </button>
       </nav>
 

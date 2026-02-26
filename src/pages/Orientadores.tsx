@@ -1,9 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { orientadores, orientadorPosts } from '@/data/mockData';
 import OrientadorCard from '@/components/OrientadorCard';
 import { BadgeCheck, Crown } from 'lucide-react';
 
 const Orientadores = () => {
+  const navigate = useNavigate();
+
+  const postCount = (id: string) => orientadorPosts.filter(p => p.orientadorId === id).length;
+
   return (
     <Layout>
       <div className="px-4 pt-4 pb-4">
@@ -29,7 +34,7 @@ const Orientadores = () => {
                   <p className="text-sm text-muted-foreground mt-1">{o.bio}</p>
                 </div>
               </div>
-              <div className="flex gap-2 mt-3">
+              <div className="flex gap-2 mt-3 flex-wrap">
                 {o.socialLinks.instagram && (
                   <a href={o.socialLinks.instagram} className="min-h-touch px-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold flex items-center">
                     Instagram
@@ -45,6 +50,12 @@ const Orientadores = () => {
                     YouTube
                   </a>
                 )}
+                <button
+                  onClick={() => navigate(`/feed?mode=orientadores&author=${o.id}`)}
+                  className="min-h-touch px-4 rounded-full bg-primary text-primary-foreground text-sm font-semibold flex items-center"
+                >
+                  Ver Conteúdos ({postCount(o.id)})
+                </button>
               </div>
             </div>
           ))}
