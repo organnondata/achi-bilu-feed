@@ -16,6 +16,7 @@ import Links from "./pages/Links";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import UserProfile from "./pages/UserProfile";
+import Orientadores from "./pages/Orientadores";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const AppRoutes = () => (
     <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
     <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
     <Route path="/user/:id" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+    <Route path="/orientadores" element={<ProtectedRoute><Orientadores /></ProtectedRoute>} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

@@ -38,6 +38,7 @@
 
     --verified: 153 50% 40%;
     --highlight: 38 90% 58%;
+    --premium: 45 90% 50%;
     --category-vehicles: 210 60% 50%;
     --category-realestate: 153 45% 35%;
     --category-services: 38 85% 50%;
@@ -73,6 +74,7 @@
     --border: 20 15% 20%;
     --input: 20 15% 20%;
     --ring: 153 45% 45%;
+    --premium: 45 85% 45%;
     --sidebar-background: 20 18% 10%;
     --sidebar-foreground: 40 20% 90%;
     --sidebar-primary: 153 45% 45%;
@@ -126,6 +128,11 @@
 
   .badge-highlight {
     background: hsl(var(--highlight));
+    color: hsl(38 80% 12%);
+  }
+
+  .badge-premium {
+    background: linear-gradient(135deg, hsl(var(--premium)), hsl(38 85% 55%));
     color: hsl(38 80% 12%);
   }
 

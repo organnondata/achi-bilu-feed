@@ -59,6 +59,7 @@ export default {
         },
         verified: "hsl(var(--verified))",
         highlight: "hsl(var(--highlight))",
+        premium: "hsl(var(--premium))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
