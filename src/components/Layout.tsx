@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star, Gem } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
@@ -118,15 +118,25 @@ const Layout = ({ children }: { children: ReactNode }) => {
               <button
                 key={item.path}
                 onClick={() => navigate(item.path)}
-                className={`flex flex-col items-center gap-0.5 min-w-[60px] min-h-touch p-1 rounded-lg transition-colors ${
+                className={`flex flex-col items-center gap-0.5 min-w-[52px] min-h-touch p-1 rounded-lg transition-colors ${
                   isActive ? 'text-primary' : 'text-muted-foreground'
                 }`}
               >
-                <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
-                <span className="text-xs font-medium">{item.label}</span>
+                <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+                <span className="text-[10px] font-medium">{item.label}</span>
               </button>
             );
           })}
+          {/* Ativos Dakila mobile */}
+          <button
+            onClick={() => navigate('/ativos')}
+            className={`flex flex-col items-center gap-0.5 min-w-[52px] min-h-touch p-1 rounded-lg transition-colors ${
+              location.pathname === '/ativos' ? 'text-bdm-gold' : 'text-muted-foreground'
+            }`}
+          >
+            <Gem size={22} strokeWidth={location.pathname === '/ativos' ? 2.5 : 2} />
+            <span className="text-[10px] font-bold">Ativos</span>
+          </button>
         </div>
       </nav>
 
@@ -148,6 +158,17 @@ const Layout = ({ children }: { children: ReactNode }) => {
             </button>
           );
         })}
+        {/* Ativos Dakila link in sidebar */}
+        <button
+          onClick={() => navigate('/ativos')}
+          className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 relative ${
+            location.pathname === '/ativos' ? 'bg-bdm-gold/10 text-bdm-gold' : 'text-muted-foreground hover:bg-muted'
+          }`}
+        >
+          <Gem size={22} strokeWidth={location.pathname === '/ativos' ? 2.5 : 2} />
+          <span className="text-[11px] font-bold">Ativos</span>
+          <span className="absolute top-1 right-0 bg-bdm-gold text-bdm-gold-foreground text-[8px] px-1 rounded-full font-bold leading-relaxed">✦</span>
+        </button>
         {/* Orientadores link in sidebar */}
         <button
           onClick={() => navigate('/orientadores')}

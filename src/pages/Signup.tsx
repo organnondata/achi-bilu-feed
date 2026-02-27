@@ -61,7 +61,10 @@ const Signup = () => {
 
       <div className="flex-1 px-4 py-8 max-w-md mx-auto w-full">
         <h2 className="text-[28px] font-bold mb-1">Criar sua conta</h2>
-        <p className="text-muted-foreground text-base mb-8">Acesso seguro com validação facial</p>
+        <p className="text-muted-foreground text-base mb-2">Acesso seguro com validação facial</p>
+        <p className="text-sm text-bdm-gold font-medium mb-8 bg-bdm-gold/10 px-4 py-2 rounded-lg">
+          ✦ Faça parte da comunidade e fortaleça seu ecossistema.
+        </p>
 
         <div className="space-y-5">
           {/* Nome */}

@@ -21,21 +21,33 @@ const Splash = () => {
 
       {/* Institutional top bar */}
       <div className="relative z-10 pt-10 text-center">
-        <p className="text-[11px] text-primary-foreground/50 tracking-[0.3em] uppercase font-medium">
+        <h2 className="text-2xl font-bold text-primary-foreground tracking-[0.15em] uppercase">
           Ecossistema Dakila
-        </p>
+        </h2>
+        <div className="w-16 h-0.5 bg-bdm-gold mx-auto mt-2 rounded-full" />
       </div>
 
       {/* Hero center */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 w-full max-w-md mx-auto">
-        <h1 className="text-5xl font-bold text-primary-foreground mb-3 leading-none">
+        <h1 className="text-6xl font-bold text-primary-foreground mb-2 leading-none">
           Bilu
         </h1>
-        <p className="text-xl text-primary-foreground/85 mb-2 font-medium">
-          Encontre Sabedoria aqui
-        </p>
-        <p className="text-base text-primary-foreground/60">
-          Compre, venda e conecte-se com sua comunidade
+
+        {/* BDM Section */}
+        <div className="mt-6 flex flex-col items-center">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-10 h-10 rounded-full bg-bdm-gold flex items-center justify-center">
+              <span className="text-bdm-gold-foreground font-bold text-lg">B</span>
+            </div>
+            <span className="text-2xl font-bold text-bdm-gold">BDM</span>
+          </div>
+          <p className="text-lg text-primary-foreground/80 font-medium">
+            Bônus Dourado Mercantil
+          </p>
+        </div>
+
+        <p className="text-base text-primary-foreground/50 mt-6">
+          Marketplace e comunidade do Ecossistema Dakila
         </p>
       </div>
 

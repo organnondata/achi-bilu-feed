@@ -60,6 +60,11 @@ export default {
         verified: "hsl(var(--verified))",
         highlight: "hsl(var(--highlight))",
         premium: "hsl(var(--premium))",
+        "bdm-gold": {
+          DEFAULT: "hsl(var(--bdm-gold))",
+          foreground: "hsl(var(--bdm-gold-foreground))",
+          dark: "hsl(var(--bdm-dark))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
