@@ -1,6 +1,7 @@
 import { Heart, MessageSquare, Share2, BadgeCheck } from 'lucide-react';
 import { OrientadorPost } from '@/data/mockData';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CommentsSection from './CommentsSection';
 import ShareModal from './ShareModal';
 
@@ -9,6 +10,7 @@ const OrientadorCard = ({ post }: { post: OrientadorPost }) => {
   const [likeCount, setLikeCount] = useState(post.likes);
   const [showComments, setShowComments] = useState(false);
   const [showShare, setShowShare] = useState(false);
+  const navigate = useNavigate();
 
   const handleLike = () => {
     setLiked(!liked);
@@ -17,12 +19,17 @@ const OrientadorCard = ({ post }: { post: OrientadorPost }) => {
 
   return (
     <article className="bg-card rounded-xl overflow-hidden feed-card-shadow border border-secondary/20 relative">
-      {/* Author header */}
+      {/* Author header - clickable */}
       <div className="p-4 flex items-center gap-3">
-        <img src={post.orientadorAvatar} alt={post.orientadorName} className="w-12 h-12 rounded-full object-cover" />
-        <div className="flex-1">
+        <img
+          src={post.orientadorAvatar}
+          alt={post.orientadorName}
+          className="w-12 h-12 rounded-full object-cover cursor-pointer"
+          onClick={() => navigate(`/orientador/${post.orientadorId}`)}
+        />
+        <div className="flex-1 cursor-pointer" onClick={() => navigate(`/orientador/${post.orientadorId}`)}>
           <div className="flex items-center gap-1.5">
-            <span className="font-bold text-base">{post.orientadorName}</span>
+            <span className="font-bold text-base hover:text-primary transition-colors">{post.orientadorName}</span>
             <BadgeCheck size={18} className="text-verified" />
           </div>
           <span className="text-sm text-muted-foreground">{post.orientadorRole}</span>
