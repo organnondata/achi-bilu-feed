@@ -20,11 +20,14 @@ const Splash = () => {
       <div className="absolute inset-0 splash-gradient" />
 
       {/* Institutional top bar */}
-      <div className="relative z-10 pt-10 text-center">
-        <h2 className="text-2xl font-bold text-primary-foreground tracking-[0.15em] uppercase">
+      <div className="relative z-10 pt-8 text-center">
+        <h2 className="text-4xl sm:text-5xl font-black text-primary-foreground tracking-[0.2em] uppercase drop-shadow-lg">
           Ecossistema Dakila
         </h2>
-        <div className="w-16 h-0.5 bg-bdm-gold mx-auto mt-2 rounded-full" />
+        <div className="w-24 h-1 bg-bdm-gold mx-auto mt-3 rounded-full shadow-lg" />
+        <p className="text-primary-foreground/60 text-sm mt-2 tracking-widest uppercase">
+          Comunidade · Expansão · Valores
+        </p>
       </div>
 
       {/* Hero center */}
