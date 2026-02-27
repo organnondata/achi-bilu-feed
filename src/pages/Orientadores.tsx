@@ -23,7 +23,7 @@ const Orientadores = () => {
         <div className="space-y-4 mb-8">
           {orientadores.map(o => (
             <div key={o.id} className="bg-card rounded-xl p-4 feed-card-shadow border border-secondary/10">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate(`/orientador/${o.id}`)}>
                 <img src={o.avatar} alt={o.name} className="w-16 h-16 rounded-full object-cover border-2 border-secondary/30" />
                 <div className="flex-1">
                   <div className="flex items-center gap-1.5 mb-0.5">

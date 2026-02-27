@@ -19,6 +19,7 @@ import Links from "./pages/Links";
 import Profile from "./pages/Profile";
 import Admin from "./pages/Admin";
 import UserProfile from "./pages/UserProfile";
+import OrientadorProfile from "./pages/OrientadorProfile";
 import Orientadores from "./pages/Orientadores";
 import Premium from "./pages/Premium";
 import AtivosDakila from "./pages/AtivosDakila";
@@ -52,6 +53,7 @@ const AppRoutes = () => (
     <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
     <Route path="/user/:id" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
     <Route path="/orientadores" element={<ProtectedRoute><Orientadores /></ProtectedRoute>} />
+    <Route path="/orientador/:id" element={<ProtectedRoute><OrientadorProfile /></ProtectedRoute>} />
     <Route path="/premium" element={<ProtectedRoute><Premium /></ProtectedRoute>} />
     <Route path="/ativos" element={<ProtectedRoute><AtivosDakila /></ProtectedRoute>} />
     <Route path="/bdm" element={<ProtectedRoute><SaibaMaisBDM /></ProtectedRoute>} />
