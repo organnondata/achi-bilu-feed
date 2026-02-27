@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Comment, currentUser } from '@/data/mockData';
 import { Send } from 'lucide-react';
 
@@ -10,6 +11,7 @@ interface CommentsSectionProps {
 const CommentsSection = ({ comments, onAddComment }: CommentsSectionProps) => {
   const [text, setText] = useState('');
   const [localComments, setLocalComments] = useState<Comment[]>(comments);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (!text.trim()) return;
@@ -28,14 +30,23 @@ const CommentsSection = ({ comments, onAddComment }: CommentsSectionProps) => {
 
   return (
     <div className="pt-3 border-t border-border">
-      {/* Comments list */}
       {localComments.length > 0 && (
         <div className="space-y-3 mb-3">
           {localComments.map(c => (
             <div key={c.id} className="flex gap-2">
-              <img src={c.userAvatar} alt={c.userName} className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5" />
+              <img
+                src={c.userAvatar}
+                alt={c.userName}
+                className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5 cursor-pointer"
+                onClick={() => navigate(`/user/${c.userId}`)}
+              />
               <div>
-                <span className="font-semibold text-sm">{c.userName}</span>
+                <span
+                  className="font-semibold text-sm cursor-pointer hover:text-primary transition-colors"
+                  onClick={() => navigate(`/user/${c.userId}`)}
+                >
+                  {c.userName}
+                </span>
                 <p className="text-base text-foreground">{c.text}</p>
               </div>
             </div>
@@ -43,7 +54,6 @@ const CommentsSection = ({ comments, onAddComment }: CommentsSectionProps) => {
         </div>
       )}
 
-      {/* Input */}
       <div className="flex items-center gap-2">
         <img src={currentUser.avatar} alt="Você" className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
         <input

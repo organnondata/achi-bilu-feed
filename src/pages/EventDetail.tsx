@@ -136,9 +136,9 @@ const EventDetail = () => {
               <p className="text-sm text-muted-foreground mb-2">{mockParticipants.length} pessoas confirmadas</p>
               {mockParticipants.map(p => (
                 <div key={p.id} className="flex items-center gap-3 bg-card rounded-xl p-3 border border-border">
-                  <img src={p.avatar} alt={p.name} className="w-11 h-11 rounded-full object-cover" />
+                  <img src={p.avatar} alt={p.name} className="w-11 h-11 rounded-full object-cover cursor-pointer" onClick={() => navigate(`/user/${p.id}`)} />
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm truncate">{p.name}</p>
+                    <p className="font-semibold text-sm truncate cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(`/user/${p.id}`)}>{p.name}</p>
                     <p className="text-xs text-muted-foreground">{p.city}, {p.state}</p>
                   </div>
                   <button
@@ -167,9 +167,9 @@ const EventDetail = () => {
                 {mockCaronas.map(c => (
                   <div key={c.id} className="bg-card rounded-xl p-4 border border-border feed-card-shadow">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={c.user.avatar} alt={c.user.name} className="w-10 h-10 rounded-full object-cover" />
+                      <img src={c.user.avatar} alt={c.user.name} className="w-10 h-10 rounded-full object-cover cursor-pointer" onClick={() => navigate(`/user/${c.user.id}`)} />
                       <div className="flex-1">
-                        <p className="font-semibold text-sm">{c.user.name}</p>
+                        <p className="font-semibold text-sm cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(`/user/${c.user.id}`)}>{c.user.name}</p>
                         <p className="text-xs text-muted-foreground">{c.user.city}, {c.user.state}</p>
                       </div>
                     </div>

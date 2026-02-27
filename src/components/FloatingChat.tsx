@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { X, Minus, Send, Phone } from 'lucide-react';
 import { ChatConversation, currentUser } from '@/data/mockData';
 
@@ -12,6 +13,7 @@ interface Props {
 const FloatingChat = ({ chat, onClose, onMinimize, minimized }: Props) => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState(chat.messages);
+  const navigate = useNavigate();
   const otherUser = chat.participants.find(p => p.id !== currentUser.id) || chat.participants[1];
 
   const sendMessage = () => {
@@ -44,12 +46,12 @@ const FloatingChat = ({ chat, onClose, onMinimize, minimized }: Props) => {
     <div className="w-80 bg-card border border-border rounded-xl shadow-2xl flex flex-col overflow-hidden" style={{ height: '400px' }}>
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b border-border bg-primary/5">
-        <div className="relative">
+        <div className="relative cursor-pointer" onClick={() => navigate(`/user/${otherUser.id}`)}>
           <img src={otherUser.avatar} className="w-9 h-9 rounded-full object-cover" alt="" />
           {chat.online && <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-verified rounded-full border-2 border-card" />}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-sm truncate">{otherUser.name}</p>
+          <p className="font-semibold text-sm truncate cursor-pointer hover:text-primary transition-colors" onClick={() => navigate(`/user/${otherUser.id}`)}>{otherUser.name}</p>
           <p className="text-xs text-muted-foreground">
             {chat.online ? 'Online' : chat.lastSeen ? 'Visto recentemente' : 'Offline'}
           </p>

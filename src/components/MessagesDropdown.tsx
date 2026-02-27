@@ -1,6 +1,7 @@
 import { MessageCircle } from 'lucide-react';
 import { chatConversations, currentUser } from '@/data/mockData';
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   onOpenChat?: (chatId: string) => void;
@@ -9,6 +10,7 @@ interface Props {
 const MessagesDropdown = ({ onOpenChat }: Props) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const unreadCount = 3;
 
   useEffect(() => {
@@ -48,14 +50,22 @@ const MessagesDropdown = ({ onOpenChat }: Props) => {
                   onClick={() => { onOpenChat?.(chat.id); setOpen(false); }}
                   className="w-full flex items-center gap-3 p-3 border-b border-border last:border-0 hover:bg-muted/50 transition-colors text-left"
                 >
-                  <div className="relative flex-shrink-0">
+                  <div
+                    className="relative flex-shrink-0 cursor-pointer"
+                    onClick={(e) => { e.stopPropagation(); navigate(`/user/${otherUser.id}`); setOpen(false); }}
+                  >
                     <img src={otherUser.avatar} className="w-10 h-10 rounded-full object-cover" alt="" />
                     {chat.online && (
                       <div className="absolute bottom-0 right-0 w-3 h-3 bg-verified rounded-full border-2 border-card" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-sm truncate">{otherUser.name}</p>
+                    <p
+                      className="font-semibold text-sm truncate hover:text-primary transition-colors cursor-pointer"
+                      onClick={(e) => { e.stopPropagation(); navigate(`/user/${otherUser.id}`); setOpen(false); }}
+                    >
+                      {otherUser.name}
+                    </p>
                     <p className="text-xs text-muted-foreground truncate">{lastMsg?.text}</p>
                   </div>
                 </button>
