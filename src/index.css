@@ -39,6 +39,9 @@
     --verified: 153 50% 40%;
     --highlight: 38 90% 58%;
     --premium: 45 90% 50%;
+    --bdm-gold: 42 85% 52%;
+    --bdm-gold-foreground: 42 80% 12%;
+    --bdm-dark: 42 70% 30%;
     --category-vehicles: 210 60% 50%;
     --category-realestate: 153 45% 35%;
     --category-services: 38 85% 50%;
@@ -75,6 +78,9 @@
     --input: 20 15% 20%;
     --ring: 153 45% 45%;
     --premium: 45 85% 45%;
+    --bdm-gold: 42 80% 48%;
+    --bdm-gold-foreground: 42 80% 12%;
+    --bdm-dark: 42 65% 25%;
     --sidebar-background: 20 18% 10%;
     --sidebar-foreground: 40 20% 90%;
     --sidebar-primary: 153 45% 45%;
@@ -142,6 +148,17 @@
   .badge-premium {
     background: linear-gradient(135deg, hsl(var(--premium)), hsl(38 85% 55%));
     color: hsl(38 80% 12%);
+  }
+
+  .badge-bdm {
+    background: linear-gradient(135deg, hsl(var(--bdm-gold)), hsl(42 90% 60%));
+    color: hsl(42 80% 12%);
+  }
+
+  .badge-ativo-dakila {
+    background: linear-gradient(135deg, hsl(var(--bdm-gold)), hsl(45 85% 55%));
+    color: hsl(42 80% 12%);
+    border: 1px solid hsl(42 70% 50% / 0.3);
   }
 
   .category-vehicles {

@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout';
 import { useAuth } from '@/contexts/AuthContext';
 import { announcements, formatPrice, pointsLevels } from '@/data/mockData';
-import { BadgeCheck, Settings, LogOut, ChevronRight, Crown, MapPin, Link as LinkIcon, Star, Shield } from 'lucide-react';
+import { BadgeCheck, Settings, LogOut, ChevronRight, Crown, MapPin, Link as LinkIcon, Star, Shield, Gem, MessageCircle, Handshake, ExternalLink, Briefcase } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
@@ -18,38 +18,85 @@ const Profile = () => {
   return (
     <Layout>
       <div className="px-4 pt-4 pb-4">
-        {/* Profile header */}
-        <div className="text-center mb-6">
-          <img src={user?.avatar} alt={user?.name} className="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-4 border-primary/20" />
-          <h2 className="text-heading font-bold flex items-center justify-center gap-2">
-            {user?.name}
-            {user?.verified && <BadgeCheck size={24} className="text-verified" />}
-          </h2>
-          <p className="text-muted-foreground flex items-center justify-center gap-1">
-            <MapPin size={16} /> {user?.city}, {user?.state}
-          </p>
+        {/* Profile header - LinkedIn style */}
+        <div className="bg-card rounded-xl overflow-hidden feed-card-shadow mb-6">
+          {/* Cover */}
+          <div className="h-24 bg-gradient-to-r from-primary to-primary/70" />
+          <div className="px-4 pb-4 -mt-10">
+            <img src={user?.avatar} alt={user?.name} className="w-20 h-20 rounded-full object-cover border-4 border-card mb-2" />
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              {user?.name}
+              {user?.verified && <BadgeCheck size={20} className="text-verified" />}
+            </h2>
+            <p className="text-sm text-muted-foreground flex items-center gap-1 mb-1">
+              <Briefcase size={14} /> Empreendedor · Agronegócio
+            </p>
+            <p className="text-sm text-muted-foreground flex items-center gap-1 mb-2">
+              <MapPin size={14} /> {user?.city}, {user?.state}
+            </p>
+            <p className="text-sm text-muted-foreground italic mb-3">
+              "Fortalecendo o ecossistema através do comércio colaborativo."
+            </p>
 
-          {/* Level badge */}
-          <div className="flex items-center justify-center gap-2 mt-2">
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-bold" style={{ background: `${level.color}20`, color: level.color }}>
-              <Star size={14} fill="currentColor" /> Nível {user?.level} · {user?.points} pts
-            </span>
-          </div>
-
-          {/* Verification badges */}
-          <div className="flex items-center justify-center gap-2 mt-2 flex-wrap">
-            {user?.verified && (
-              <span className="inline-block badge-verified px-4 py-1 rounded-full text-sm font-semibold">
-                ✓ Verificado por reconhecimento facial
+            {/* Badges */}
+            <div className="flex flex-wrap gap-2 mb-3">
+              {user?.verified && (
+                <span className="inline-block badge-verified px-3 py-1 rounded-full text-xs font-semibold">
+                  ✓ Verificado
+                </span>
+              )}
+              {user?.bdmAccount && (
+                <span className="inline-flex items-center gap-1 badge-bdm px-3 py-1 rounded-full text-xs font-bold">
+                  <Gem size={12} /> Correntista BDM
+                </span>
+              )}
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold" style={{ background: `${level.color}20`, color: level.color }}>
+                <Star size={12} fill="currentColor" /> Nível {user?.level}
               </span>
-            )}
+            </div>
+
+            {/* BDM Level */}
             {user?.bdmAccount && (
-              <span className="inline-flex items-center gap-1 bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold">
-                <Shield size={14} /> Conta BDM Ativa
-              </span>
+              <div className="bg-bdm-gold/10 rounded-lg px-3 py-2 flex items-center gap-2 mb-3 border border-bdm-gold/20">
+                <Gem size={16} className="text-bdm-gold" />
+                <div className="flex-1">
+                  <p className="text-xs font-bold text-bdm-gold">Nível BDM: {user?.level}</p>
+                  <p className="text-xs text-muted-foreground">{user?.points} pontos acumulados</p>
+                </div>
+              </div>
             )}
+
+            {/* Assets list */}
+            <div className="mb-3">
+              <p className="text-xs font-semibold text-muted-foreground mb-1.5">Comercializa:</p>
+              <div className="flex flex-wrap gap-1">
+                {['Cosméticos Dakila', 'Chás de Moringa', 'Consultoria'].map(item => (
+                  <span key={item} className="text-xs bg-muted px-2 py-0.5 rounded-full text-muted-foreground">{item}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex gap-2">
+              <button className="flex-1 min-h-touch bg-primary text-primary-foreground rounded-lg font-semibold text-sm flex items-center justify-center gap-1.5">
+                <MessageCircle size={16} /> Mensagem
+              </button>
+              <button className="flex-1 min-h-touch bg-bdm-gold text-bdm-gold-foreground rounded-lg font-semibold text-sm flex items-center justify-center gap-1.5">
+                <Handshake size={16} /> Negociar
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Saiba mais BDM */}
+        <button
+          onClick={() => navigate('/bdm')}
+          className="w-full bg-gradient-to-r from-bdm-gold-dark to-bdm-gold rounded-xl p-3 mb-6 flex items-center gap-3"
+        >
+          <Gem size={20} className="text-primary-foreground" />
+          <span className="flex-1 text-left font-bold text-primary-foreground text-sm">Saiba Mais BDM</span>
+          <ExternalLink size={16} className="text-primary-foreground/60" />
+        </button>
 
         {/* Plan */}
         <div className="bg-accent rounded-xl p-4 mb-6 border border-primary/20">
@@ -88,6 +135,11 @@ const Profile = () => {
 
         {/* Menu */}
         <div className="space-y-2">
+          <button onClick={() => navigate('/ativos')} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors">
+            <Crown size={20} className="text-bdm-gold" />
+            <span className="flex-1 text-left font-medium">Ativos Dakila</span>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </button>
           <button onClick={() => navigate('/orientadores')} className="w-full flex items-center gap-3 min-h-touch px-4 rounded-xl hover:bg-muted transition-colors">
             <Crown size={20} className="text-secondary" />
             <span className="flex-1 text-left font-medium">Orientadores</span>
