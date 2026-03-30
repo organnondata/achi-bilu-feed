@@ -1,3 +1,5 @@
+import fundadorImg from '@/assets/fundador.png';
+
 export interface User {
   id: string;
   name: string;
@@ -359,9 +361,9 @@ export const orientadores: Orientador[] = [
     socialLinks: { instagram: '#', youtube: '#', tiktok: '#' },
   },
   {
-    id: 'o2', name: 'Urandir', role: 'Fundador BDM',
+    id: 'o2', name: 'Urandir Fernandes', role: 'Fundador BDM',
     bio: 'Fundador do projeto Dakila e do movimento BDM. Visionário e empreendedor social.',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    avatar: fundadorImg,
     links: [{ label: 'Site Oficial', url: '#' }, { label: 'YouTube', url: '#' }],
     socialLinks: { instagram: '#', youtube: '#', tiktok: '#' },
   },
@@ -397,8 +399,8 @@ export const orientadores: Orientador[] = [
 
 export const orientadorPosts: OrientadorPost[] = [
   {
-    id: 'op1', orientadorId: 'o2', orientadorName: 'Urandir',
-    orientadorAvatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    id: 'op1', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
+    orientadorAvatar: fundadorImg,
     orientadorRole: 'Fundador BDM',
     title: 'Novidades sobre o Projeto Dakila 2025',
     content: 'Estamos com grandes novidades para 2025! O projeto Dakila está expandindo para novas regiões e lançando produtos exclusivos.',
@@ -471,8 +473,8 @@ export const orientadorPosts: OrientadorPost[] = [
     socialLinks: { instagram: '#', youtube: '#' },
   },
   {
-    id: 'op7', orientadorId: 'o2', orientadorName: 'Urandir',
-    orientadorAvatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    id: 'op7', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
+    orientadorAvatar: fundadorImg,
     orientadorRole: 'Fundador BDM',
     title: 'O Futuro da Economia Colaborativa',
     content: 'O BDM é mais do que um marketplace. É uma rede de pessoas unidas por valores de colaboração, respeito e desenvolvimento mútuo.',

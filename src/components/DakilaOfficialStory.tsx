@@ -1,27 +1,31 @@
 import { useState } from 'react';
-import { BadgeCheck, X, ChevronLeft, ChevronRight, Building2, MapPin, Radio } from 'lucide-react';
+import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import fundador from '@/assets/fundador.png';
+import corguinhos from '@/assets/corguinhos.avif';
+import zigurats from '@/assets/zigurats.jpg';
+import amazonPesquisa from '@/assets/amazon_pesquisa.avif';
 
 const newsSlides = [
   {
     id: 's1',
-    title: 'Zigurats – Centro de Treinamento',
-    text: 'Centro de treinamento para mais de 21 países. Estrutura de pesquisa e desenvolvimento reconhecida internacionalmente.',
-    bgClass: 'from-primary to-primary/80',
-    Icon: Building2,
+    title: 'Fendas em Corguínhos',
+    text: 'Durante trabalhos de pesquisa na região de Corguínhos, foram descobertas novas fendas e cavernas.',
+    bgClass: 'from-emerald-700 to-emerald-900',
+    image: corguinhos,
   },
   {
     id: 's2',
-    title: 'Fendas em Corguinhos',
-    text: 'Nos últimos dias foram encontradas fendas em Corguinhos durante trabalhos de pesquisa na região.',
-    bgClass: 'from-emerald-700 to-emerald-900',
-    Icon: MapPin,
+    title: 'Centro de treinamento para catástrofes naturais',
+    text: 'O centro de treinamento do Zigurats atende mais de 21 países na preparação para desastres.',
+    bgClass: 'from-primary to-primary/80',
+    image: zigurats,
   },
   {
     id: 's3',
-    title: 'Raio Diamante & TOP FM',
-    text: 'O ecossistema Dakila lançou o Sistema Raio Diamante e adquiriu a rádio TOP Campo Grande FM.',
+    title: 'Novas aquisições Dakila',
+    text: 'Dakila lança o Sistema Raio Diamante e apresenta sua nova emissora de rádio, a Top Campo Grande FM.',
     bgClass: 'from-amber-700 to-amber-900',
-    Icon: Radio,
+    image: amazonPesquisa,
   },
 ];
 
@@ -52,14 +56,14 @@ const DakilaOfficialStory = () => {
 
   return (
     <>
-      {/* Story bubble */}
+      {/* Story bubble with founder photo */}
       <button onClick={handleOpen} className="flex flex-col items-center gap-1.5 min-w-[80px] group">
         <div className="relative">
           <div className={`w-[68px] h-[68px] rounded-full p-[3px] ${
             seen ? 'bg-muted' : 'bg-gradient-to-br from-amber-500 via-primary to-emerald-500'
           }`}>
             <div className="w-full h-full rounded-full overflow-hidden border-2 border-card bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">D</span>
+              <img src={fundador} alt="Dakila News" className="w-full h-full object-cover object-top" />
             </div>
           </div>
           <div className="absolute -bottom-0.5 -right-0.5 bg-amber-500 rounded-full p-0.5">
@@ -81,7 +85,7 @@ const DakilaOfficialStory = () => {
                 <div key={i} className="flex-1 h-1 rounded-full bg-white/20 overflow-hidden">
                   <div
                     className="h-full bg-white rounded-full transition-all duration-300"
-                    style={{ width: i < currentSlide ? '100%' : i === currentSlide ? '100%' : '0%' }}
+                    style={{ width: i <= currentSlide ? '100%' : '0%' }}
                   />
                 </div>
               ))}
@@ -89,27 +93,26 @@ const DakilaOfficialStory = () => {
 
             {/* Header */}
             <div className="absolute top-6 left-0 right-0 z-10 flex items-center gap-3 px-4">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center border-2 border-white/50">
-                <span className="text-primary-foreground font-bold text-sm">D</span>
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/50">
+                <img src={fundador} alt="Dakila" className="w-full h-full object-cover object-top" />
               </div>
               <div className="flex-1">
                 <p className="text-white font-bold text-sm">Dakila Pesquisas – Notícias</p>
                 <p className="text-white/60 text-xs">Conta Oficial</p>
               </div>
-              <button onClick={() => setOpen(false)} className="min-h-touch min-w-[44px] flex items-center justify-center text-white/80 hover:text-white">
+              <button onClick={() => setOpen(false)} className="min-h-[44px] min-w-[44px] flex items-center justify-center text-white/80 hover:text-white">
                 <X size={24} />
               </button>
             </div>
 
-            {/* Slide content */}
-            <div className={`flex-1 bg-gradient-to-b ${slide.bgClass} flex flex-col items-center justify-center p-8 text-center`}>
-              {/* Placeholder image area */}
-              <div className="w-48 h-48 rounded-2xl bg-white/10 border-2 border-dashed border-white/30 flex flex-col items-center justify-center mb-6">
-                <slide.Icon size={48} className="text-white/60 mb-2" />
-                <span className="text-white/50 text-xs">Imagem em breve</span>
+            {/* Slide content with real image */}
+            <div className="flex-1 relative flex flex-col">
+              <img src={slide.image} alt={slide.title} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+              <div className="relative flex-1 flex flex-col items-center justify-end p-8 pb-12 text-center">
+                <h3 className="text-white font-bold text-2xl mb-3 leading-tight drop-shadow-lg">{slide.title}</h3>
+                <p className="text-white/90 text-lg leading-relaxed drop-shadow-md">{slide.text}</p>
               </div>
-              <h3 className="text-white font-bold text-2xl mb-3 leading-tight">{slide.title}</h3>
-              <p className="text-white/80 text-lg leading-relaxed">{slide.text}</p>
             </div>
 
             {/* Touch navigation */}
