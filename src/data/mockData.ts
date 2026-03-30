@@ -471,8 +471,8 @@ export const orientadorPosts: OrientadorPost[] = [
     socialLinks: { instagram: '#', youtube: '#' },
   },
   {
-    id: 'op7', orientadorId: 'o2', orientadorName: 'Urandir',
-    orientadorAvatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    id: 'op7', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
+    orientadorAvatar: '/src/assets/fundador.png',
     orientadorRole: 'Fundador BDM',
     title: 'O Futuro da Economia Colaborativa',
     content: 'O BDM é mais do que um marketplace. É uma rede de pessoas unidas por valores de colaboração, respeito e desenvolvimento mútuo.',

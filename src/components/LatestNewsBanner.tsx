@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Newspaper, X, ChevronRight, MapPin, Radio, Building2 } from 'lucide-react';
+import zigurats from '@/assets/zigurats.jpg';
+import corguinhos from '@/assets/corguinhos.avif';
+import amazonPesquisa from '@/assets/amazon_pesquisa.avif';
 
 interface NewsItem {
   id: string;
   title: string;
   description: string;
   icon: 'zigurats' | 'research' | 'radio';
-  image?: string;
+  image: string;
 }
 
 const newsItems: NewsItem[] = [
@@ -15,18 +18,21 @@ const newsItems: NewsItem[] = [
     title: 'Zigurats – Centro de Treinamento',
     description: 'Centro de treinamento para mais de 21 países. Estrutura de pesquisa e desenvolvimento reconhecida internacionalmente pela comunidade Dakila.',
     icon: 'zigurats',
+    image: zigurats,
   },
   {
     id: 'n2',
     title: 'Pesquisas Dakila News – Fendas em Corguinhos',
-    description: 'Nos últimos dias foram encontradas fendas em Corguinhos durante trabalhos de pesquisa na região.',
+    description: 'Durante trabalhos de pesquisa na região de Corguínhos, foram descobertas novas fendas e cavernas.',
     icon: 'research',
+    image: corguinhos,
   },
   {
     id: 'n3',
     title: 'Sistema Dakila Raio Diamante e TOP CAMPO GRANDE FM',
-    description: 'O ecossistema Dakila lançou o Sistema Raio Diamante e adquiriu a rádio TOP Campo Grande FM, expandindo a presença institucional.',
+    description: 'Dakila lança o Sistema Raio Diamante e apresenta sua nova emissora de rádio, a Top Campo Grande FM.',
     icon: 'radio',
+    image: amazonPesquisa,
   },
 ];
 
@@ -63,7 +69,7 @@ const LatestNewsBanner = () => {
                 <Newspaper size={20} className="text-primary" />
                 <h2 className="text-xl font-bold">Últimas Notícias</h2>
               </div>
-              <button onClick={() => setOpen(false)} className="min-h-touch min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground">
+              <button onClick={() => setOpen(false)} className="min-h-[44px] min-w-[44px] flex items-center justify-center text-muted-foreground hover:text-foreground">
                 <X size={22} />
               </button>
             </div>
@@ -71,19 +77,18 @@ const LatestNewsBanner = () => {
               {newsItems.map(item => {
                 const Icon = iconMap[item.icon];
                 return (
-                  <div key={item.id} className="bg-muted/50 rounded-xl p-4 border border-border">
-                    <div className="flex items-start gap-3">
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Icon size={24} className="text-primary" />
+                  <div key={item.id} className="bg-muted/50 rounded-xl overflow-hidden border border-border">
+                    <img src={item.image} alt={item.title} className="w-full h-48 object-cover" />
+                    <div className="p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Icon size={20} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-bold text-base text-foreground mb-1">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="font-bold text-base text-foreground mb-1">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                      </div>
-                    </div>
-                    {/* Placeholder for future image */}
-                    <div className="mt-3 w-full h-40 rounded-lg bg-muted border-2 border-dashed border-border flex items-center justify-center">
-                      <span className="text-sm text-muted-foreground">📷 Imagem será inserida pelo cliente</span>
                     </div>
                   </div>
                 );
