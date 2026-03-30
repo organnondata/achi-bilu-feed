@@ -219,7 +219,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a7', title: 'Honda CG 160 Titan 2022',
     description: 'Moto em excelente estado, baixa quilometragem. Único dono.',
-    price: 14500, images: ['https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop'],
+    price: 14500, images: ['https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=800&h=600&fit=crop'],
     category: 'vehicles', type: 'Moto', condition: 'Usado',
     city: 'Uberaba', state: 'MG', author: users[3], createdAt: '2025-02-19',
     featured: false, likes: 15, comments: [mockComments[0]],
