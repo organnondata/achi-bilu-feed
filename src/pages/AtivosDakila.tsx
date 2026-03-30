@@ -48,7 +48,7 @@ const ativos: AtivoItem[] = [
   {
     id: 'at6', name: 'Creme Facial Anti-idade Dakila',
     description: 'Creme facial premium com ingredientes naturais exclusivos da linha Dakila.',
-    image: 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop',
     type: 'produto', price: 'R$ 79,00', badge: 'Ativo Oficial Dakila',
   },
   {
