@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star, Gem } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star, Gem, Radio } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
@@ -179,6 +179,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
           <BookOpen size={22} strokeWidth={location.pathname === '/orientadores' ? 2.5 : 2} />
           <span className="text-[11px] font-bold">Orientadores</span>
           <span className="absolute top-1 right-0 bg-primary text-primary-foreground text-[8px] px-1 rounded-full font-bold leading-relaxed">✦</span>
+        </button>
+        {/* Radio link */}
+        <button
+          onClick={() => navigate('/radio')}
+          className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-colors min-h-touch w-16 ${
+            location.pathname === '/radio' ? 'bg-accent text-primary' : 'text-muted-foreground hover:bg-muted'
+          }`}
+        >
+          <Radio size={22} strokeWidth={location.pathname === '/radio' ? 2.5 : 2} />
+          <span className="text-[11px] font-bold">Rádio</span>
         </button>
         {/* Premium link */}
         <button

@@ -24,6 +24,7 @@ import Orientadores from "./pages/Orientadores";
 import Premium from "./pages/Premium";
 import AtivosDakila from "./pages/AtivosDakila";
 import SaibaMaisBDM from "./pages/SaibaMaisBDM";
+import RadioPage from "./pages/RadioPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -57,6 +58,7 @@ const AppRoutes = () => (
     <Route path="/premium" element={<ProtectedRoute><Premium /></ProtectedRoute>} />
     <Route path="/ativos" element={<ProtectedRoute><AtivosDakila /></ProtectedRoute>} />
     <Route path="/bdm" element={<ProtectedRoute><SaibaMaisBDM /></ProtectedRoute>} />
+    <Route path="/radio" element={<ProtectedRoute><RadioPage /></ProtectedRoute>} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

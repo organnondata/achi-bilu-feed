@@ -5,6 +5,7 @@ import FeedCard from '@/components/FeedCard';
 import OrientadorCard from '@/components/OrientadorCard';
 import PremiumBanner from '@/components/PremiumBanner';
 import OrientadoresStories from '@/components/OrientadoresStories';
+import LatestNewsBanner from '@/components/LatestNewsBanner';
 import Layout from '@/components/Layout';
 import { SlidersHorizontal, X, Crown } from 'lucide-react';
 
@@ -74,6 +75,9 @@ const Feed = () => {
       <div className="px-4 pt-4">
         {/* Premium banner */}
         <PremiumBanner />
+
+        {/* Últimas Notícias banner */}
+        <LatestNewsBanner />
 
         {/* Orientadores Stories - always visible */}
         <OrientadoresStories />
