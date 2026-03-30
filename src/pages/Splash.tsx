@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
 import heroImage from '@/assets/hero-splash.jpg';
+import ecossistemaLogo from '@/assets/ecossistema_dakila_logo.png';
 
 const Splash = () => {
   const navigate = useNavigate();
@@ -20,10 +21,8 @@ const Splash = () => {
       <div className="absolute inset-0 splash-gradient" />
 
       {/* Institutional top bar */}
-      <div className="relative z-10 pt-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-black text-primary-foreground tracking-[0.2em] uppercase drop-shadow-lg">
-          Ecossistema Dakila
-        </h2>
+      <div className="relative z-10 pt-8 flex flex-col items-center">
+        <img src={ecossistemaLogo} alt="Ecossistema Dakila" className="h-16 sm:h-20 object-contain drop-shadow-lg" />
         <div className="w-24 h-1 bg-bdm-gold mx-auto mt-3 rounded-full shadow-lg" />
         <p className="text-primary-foreground/60 text-sm mt-2 tracking-widest uppercase">
           Comunidade · Expansão · Valores

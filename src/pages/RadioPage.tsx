@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import { Radio, Music, Clock, ExternalLink, Volume2 } from 'lucide-react';
+import radioTopFm from '@/assets/radio_top_fm.png';
 
 const schedule = [
   { time: '06:00 – 09:00', show: 'Bom Dia Campo Grande', host: 'Equipe TOP FM' },
@@ -15,24 +16,20 @@ const RadioPage = () => {
   return (
     <Layout>
       <div className="px-4 pt-4 pb-8">
-        {/* Hero */}
-        <div className="bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-2xl p-6 mb-6 text-primary-foreground">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-16 h-16 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-              <Radio size={32} />
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold">TOP Campo Grande FM</h1>
-              <p className="text-primary-foreground/80 text-base">Rádio oficial do Ecossistema Dakila</p>
-            </div>
+        {/* Hero with image */}
+        <div className="rounded-2xl overflow-hidden mb-6">
+          <img src={radioTopFm} alt="Rádio TOP Campo Grande FM" className="w-full h-48 sm:h-56 object-cover" />
+          <div className="bg-gradient-to-br from-primary via-primary/90 to-primary/70 p-6 text-primary-foreground">
+            <h1 className="text-2xl font-bold mb-1">TOP Campo Grande FM</h1>
+            <p className="text-primary-foreground/80 text-base mb-4">Rádio oficial do Ecossistema Dakila</p>
+            <p className="text-lg leading-relaxed mb-4">
+              A TOP Campo Grande FM foi adquirida pelo Ecossistema Dakila para expandir a presença institucional e fortalecer a comunicação com a comunidade.
+            </p>
+            <button className="w-full min-h-[52px] bg-primary-foreground text-primary rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+              <Volume2 size={20} />
+              Ouvir ao Vivo
+            </button>
           </div>
-          <p className="text-lg leading-relaxed mb-4">
-            A TOP Campo Grande FM foi adquirida pelo Ecossistema Dakila para expandir a presença institucional e fortalecer a comunicação com a comunidade.
-          </p>
-          <button className="w-full min-h-[52px] bg-primary-foreground text-primary rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-            <Volume2 size={20} />
-            Ouvir ao Vivo
-          </button>
         </div>
 
         {/* Info */}
