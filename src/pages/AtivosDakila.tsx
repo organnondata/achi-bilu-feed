@@ -30,7 +30,7 @@ const ativos: AtivoItem[] = [
   {
     id: 'at3', name: 'Conta Corrente BDM',
     description: 'Abra sua conta corrente BDM e participe do ecossistema de moeda complementar.',
-    image: 'https://images.unsplash.com/photo-1553729459-afe8f2e2ed08?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop',
     type: 'ativo-bdm', badge: 'Ativo BDM',
   },
   {
