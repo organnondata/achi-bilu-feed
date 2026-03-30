@@ -345,7 +345,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a22', title: 'Creme Facial Dakila Anti-idade',
     description: 'Creme facial com ingredientes naturais. Hidratação profunda e ação anti-idade.',
-    price: 79, images: ['https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=800&h=600&fit=crop'],
+    price: 79, images: ['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop'],
     category: 'products', type: 'Cosméticos Dakila', condition: 'Novo',
     city: 'Uberlândia', state: 'MG', author: users[4], createdAt: '2025-02-13',
     featured: false, likes: 27, comments: [],
