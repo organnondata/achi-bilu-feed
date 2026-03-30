@@ -359,9 +359,9 @@ export const orientadores: Orientador[] = [
     socialLinks: { instagram: '#', youtube: '#', tiktok: '#' },
   },
   {
-    id: 'o2', name: 'Urandir', role: 'Fundador BDM',
+    id: 'o2', name: 'Urandir Fernandes', role: 'Fundador BDM',
     bio: 'Fundador do projeto Dakila e do movimento BDM. Visionário e empreendedor social.',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    avatar: '/src/assets/fundador.png',
     links: [{ label: 'Site Oficial', url: '#' }, { label: 'YouTube', url: '#' }],
     socialLinks: { instagram: '#', youtube: '#', tiktok: '#' },
   },
