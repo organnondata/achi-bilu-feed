@@ -170,7 +170,7 @@ const OrientadorPostCard = ({ post, orientador }: { post: any; orientador: any }
       <div className="bg-card rounded-xl overflow-hidden feed-card-shadow">
         {/* Author header */}
         <div className="flex items-center gap-3 p-4 pb-2">
-          <img src={orientador.avatar} alt={orientador.name} className="w-10 h-10 rounded-full object-cover" />
+          <img src={orientador.avatar} alt={orientador.name} <img src={orientador.avatar} alt={orientador.name} className="w-10 h-10 rounded-full object-cover object-top" /> />
           <div className="flex-1">
             <p className="font-semibold text-sm flex items-center gap-1">
               {orientador.name}
