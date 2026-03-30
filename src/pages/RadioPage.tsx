@@ -18,7 +18,6 @@ const RadioPage = () => {
       <div className="px-4 pt-4 pb-8">
         {/* Hero with image */}
         <div className="rounded-2xl overflow-hidden mb-6">
-          <img src={radioTopFm} alt="Rádio TOP Campo Grande FM" className="w-full h-48 sm:h-56 object-cover" />
           <div className="bg-gradient-to-br from-primary via-primary/90 to-primary/70 p-6 text-primary-foreground">
             <h1 className="text-2xl font-bold mb-1">TOP Campo Grande FM</h1>
             <p className="text-primary-foreground/80 text-base mb-4">Rádio oficial do Ecossistema Dakila</p>
