@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { orientadores, orientadorPosts, type Orientador } from '@/data/mockData';
 import { BadgeCheck, GraduationCap } from 'lucide-react';
 import StoriesViewer from './StoriesViewer';
+import DakilaOfficialStory from './DakilaOfficialStory';
 
 const SEEN_KEY = 'bilu_stories_seen';
 
