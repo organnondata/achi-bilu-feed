@@ -18,6 +18,7 @@ export interface NewsPost {
 }
 
 const NewsCard = ({ post }: { post: NewsPost }) => {
+  const navigate = useNavigate();
   const [liked, setLiked] = useState(post.liked || false);
   const [likeCount, setLikeCount] = useState(post.likes);
   const [showComments, setShowComments] = useState(false);
