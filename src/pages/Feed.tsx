@@ -45,10 +45,14 @@ const Feed = () => {
 
     const oPosts = [...filteredOrientadorPosts].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     const ads = [...filtered].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    const news = [...newsPosts].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
-    const result: { type: 'ad' | 'orientador'; data: any }[] = [];
+    const result: { type: 'ad' | 'orientador' | 'news'; data: any }[] = [];
 
-    // First 3 orientador posts
+    // News posts first (most recent)
+    news.forEach(n => result.push({ type: 'news', data: n }));
+
+    // Then first 3 orientador posts
     const firstThree = oPosts.splice(0, 3);
     firstThree.forEach(p => result.push({ type: 'orientador', data: p }));
 
@@ -56,11 +60,9 @@ const Feed = () => {
     let adIdx = 0;
     let oIdx = 0;
     while (adIdx < ads.length || oIdx < oPosts.length) {
-      // 4 ads
       for (let i = 0; i < 4 && adIdx < ads.length; i++, adIdx++) {
         result.push({ type: 'ad', data: ads[adIdx] });
       }
-      // 1 orientador
       if (oIdx < oPosts.length) {
         result.push({ type: 'orientador', data: oPosts[oIdx] });
         oIdx++;
