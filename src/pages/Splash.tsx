@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
 import heroImage from '@/assets/hero-splash.jpg';
+import ecossistemaLogo from '@/assets/ecossistema_dakila_logo.png';
 
 const Splash = () => {
   const navigate = useNavigate();
