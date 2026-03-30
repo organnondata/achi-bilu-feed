@@ -1,6 +1,6 @@
 import { ReactNode, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star, Gem } from 'lucide-react';
+import { Home, Search, PlusCircle, Calendar, User, BookOpen, Star, Gem, Radio } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsDropdown from './NotificationsDropdown';
 import MessagesDropdown from './MessagesDropdown';
