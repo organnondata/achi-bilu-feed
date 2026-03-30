@@ -245,7 +245,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a10', title: 'Colar de Pedra Ametista Natural',
     description: 'Colar artesanal com pedra ametista natural polida. Cordão de couro legítimo.',
-    price: 85, images: ['https://images.unsplash.com/photo-1515562141589-67f0d569b6fc?w=800&h=600&fit=crop'],
+    price: 85, images: ['https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&h=600&fit=crop'],
     category: 'products', type: 'Colares e Pedras', condition: 'Novo',
     city: 'Uberlândia', state: 'MG', author: users[1], createdAt: '2025-02-25',
     featured: false, likes: 21, comments: [],
