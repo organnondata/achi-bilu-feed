@@ -24,7 +24,7 @@ const OrientadorCard = ({ post }: { post: OrientadorPost }) => {
         <img
           src={post.orientadorAvatar}
           alt={post.orientadorName}
-          className="w-12 h-12 rounded-full object-cover cursor-pointer"
+          className="w-12 h-12 rounded-full object-cover object-top cursor-pointer"
           onClick={() => navigate(`/orientador/${post.orientadorId}`)}
         />
         <div className="flex-1 cursor-pointer" onClick={() => navigate(`/orientador/${post.orientadorId}`)}>

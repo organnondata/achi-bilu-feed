@@ -35,7 +35,7 @@ const OrientadorProfile = () => {
         <div className="bg-card rounded-xl overflow-hidden feed-card-shadow mb-4">
           <div className="h-24 bg-gradient-to-r from-primary to-primary/70" />
           <div className="px-4 pb-4 -mt-10">
-            <img src={orientador.avatar} alt={orientador.name} className="w-24 h-24 rounded-full object-cover border-4 border-card mb-2" />
+            <img src={orientador.avatar} alt={orientador.name} <img src={orientador.avatar} alt={orientador.name} className="w-24 h-24 rounded-full object-cover object-top border-4 border-card mb-2" /> />
             <h2 className="text-xl font-bold flex items-center gap-2">
               {orientador.name}
               <BadgeCheck size={20} className="text-secondary" />
