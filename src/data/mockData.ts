@@ -363,7 +363,7 @@ export const orientadores: Orientador[] = [
   {
     id: 'o2', name: 'Urandir Fernandes', role: 'Fundador BDM',
     bio: 'Fundador do projeto Dakila e do movimento BDM. Visionário e empreendedor social.',
-    avatar: '/src/assets/fundador.png',
+    avatar: fundadorImg,
     links: [{ label: 'Site Oficial', url: '#' }, { label: 'YouTube', url: '#' }],
     socialLinks: { instagram: '#', youtube: '#', tiktok: '#' },
   },
@@ -400,7 +400,7 @@ export const orientadores: Orientador[] = [
 export const orientadorPosts: OrientadorPost[] = [
   {
     id: 'op1', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
-    orientadorAvatar: '/src/assets/fundador.png',
+    orientadorAvatar: fundadorImg,
     orientadorRole: 'Fundador BDM',
     title: 'Novidades sobre o Projeto Dakila 2025',
     content: 'Estamos com grandes novidades para 2025! O projeto Dakila está expandindo para novas regiões e lançando produtos exclusivos.',
@@ -474,7 +474,7 @@ export const orientadorPosts: OrientadorPost[] = [
   },
   {
     id: 'op7', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
-    orientadorAvatar: '/src/assets/fundador.png',
+    orientadorAvatar: fundadorImg,
     orientadorRole: 'Fundador BDM',
     title: 'O Futuro da Economia Colaborativa',
     content: 'O BDM é mais do que um marketplace. É uma rede de pessoas unidas por valores de colaboração, respeito e desenvolvimento mútuo.',
