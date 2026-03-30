@@ -58,6 +58,7 @@ const AppRoutes = () => (
     <Route path="/premium" element={<ProtectedRoute><Premium /></ProtectedRoute>} />
     <Route path="/ativos" element={<ProtectedRoute><AtivosDakila /></ProtectedRoute>} />
     <Route path="/bdm" element={<ProtectedRoute><SaibaMaisBDM /></ProtectedRoute>} />
+    <Route path="/radio" element={<ProtectedRoute><RadioPage /></ProtectedRoute>} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );

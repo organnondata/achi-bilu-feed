@@ -44,6 +44,8 @@ const OrientadoresStories = () => {
           <h2 className="text-lg font-bold">Orientadores Oficiais</h2>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          {/* Dakila Official Story - always first */}
+          <DakilaOfficialStory />
           {ordered.map(o => {
             const isSeen = seenIds.includes(o.id);
             return (
