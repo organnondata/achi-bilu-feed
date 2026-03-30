@@ -72,7 +72,10 @@ const DakilaOfficialStory = () => {
             <BadgeCheck size={14} className="text-white" />
           </div>
         </div>
-        <span className="text-xs font-semibold text-center leading-tight group-hover:text-primary transition-colors">
+        <span
+          onClick={(e) => { e.stopPropagation(); navigate('/dakila-news'); }}
+          className="text-xs font-semibold text-center leading-tight group-hover:text-primary transition-colors cursor-pointer"
+        >
           Dakila News
         </span>
       </button>

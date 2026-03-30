@@ -60,6 +60,7 @@ const AppRoutes = () => (
     <Route path="/ativos" element={<ProtectedRoute><AtivosDakila /></ProtectedRoute>} />
     <Route path="/bdm" element={<ProtectedRoute><SaibaMaisBDM /></ProtectedRoute>} />
     <Route path="/radio" element={<ProtectedRoute><RadioPage /></ProtectedRoute>} />
+    <Route path="/dakila-news" element={<ProtectedRoute><DakilaNewsProfile /></ProtectedRoute>} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
