@@ -41,7 +41,7 @@ const OrientadoresStories = () => {
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-3">
           <GraduationCap size={18} className="text-primary" />
-          <h2 className="text-lg font-bold">Orientadores Oficiais</h2>
+          <h2 className="text-lg font-bold">Dakila NEWS</h2>
         </div>
         <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {/* Dakila Official Story - always first */}

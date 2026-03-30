@@ -1,8 +1,10 @@
-import { Heart, MessageSquare, Share2, Newspaper } from 'lucide-react';
+import { Heart, MessageSquare, Share2 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CommentsSection from './CommentsSection';
 import ShareModal from './ShareModal';
 import { Comment } from '@/data/mockData';
+import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 
 export interface NewsPost {
   id: string;
@@ -16,6 +18,7 @@ export interface NewsPost {
 }
 
 const NewsCard = ({ post }: { post: NewsPost }) => {
+  const navigate = useNavigate();
   const [liked, setLiked] = useState(post.liked || false);
   const [likeCount, setLikeCount] = useState(post.likes);
   const [showComments, setShowComments] = useState(false);
@@ -30,11 +33,14 @@ const NewsCard = ({ post }: { post: NewsPost }) => {
     <article className="bg-card rounded-xl overflow-hidden feed-card-shadow relative">
       {/* Header */}
       <div className="p-4 flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
-          <Newspaper size={22} className="text-white" />
+        <div
+          onClick={() => navigate('/dakila-news')}
+          className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center flex-shrink-0 cursor-pointer overflow-hidden"
+        >
+          <img src={dakilaNewsIcon} alt="Dakila News" className="w-full h-full object-contain p-1" />
         </div>
-        <div className="flex-1">
-          <span className="font-bold text-base">Dakila News</span>
+        <div className="flex-1 cursor-pointer" onClick={() => navigate('/dakila-news')}>
+          <span className="font-bold text-base hover:text-primary transition-colors">Dakila News</span>
           <p className="text-sm text-muted-foreground">Ecossistema Dakila</p>
         </div>
         <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold">

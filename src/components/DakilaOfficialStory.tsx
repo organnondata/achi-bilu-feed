@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 import corguinhos from '@/assets/corguinhos.avif';
@@ -32,6 +33,7 @@ const newsSlides = [
 const SEEN_KEY = 'bilu_dakila_story_seen';
 
 const DakilaOfficialStory = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [seen, setSeen] = useState(() => localStorage.getItem(SEEN_KEY) === 'true');
@@ -70,7 +72,10 @@ const DakilaOfficialStory = () => {
             <BadgeCheck size={14} className="text-white" />
           </div>
         </div>
-        <span className="text-xs font-semibold text-center leading-tight group-hover:text-primary transition-colors">
+        <span
+          onClick={(e) => { e.stopPropagation(); navigate('/dakila-news'); }}
+          className="text-xs font-semibold text-center leading-tight group-hover:text-primary transition-colors cursor-pointer"
+        >
           Dakila News
         </span>
       </button>
