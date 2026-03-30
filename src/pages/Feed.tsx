@@ -78,8 +78,6 @@ const Feed = () => {
         {/* Premium banner */}
         <PremiumBanner />
 
-        {/* Últimas Notícias banner */}
-        <LatestNewsBanner />
 
         {/* Orientadores Stories - always visible */}
         <OrientadoresStories />
