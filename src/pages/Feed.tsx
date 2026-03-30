@@ -1,11 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { announcements, orientadorPosts, states } from '@/data/mockData';
+import { announcements, orientadorPosts, states, newsPosts } from '@/data/mockData';
 import FeedCard from '@/components/FeedCard';
 import OrientadorCard from '@/components/OrientadorCard';
+import NewsCard from '@/components/NewsCard';
 import PremiumBanner from '@/components/PremiumBanner';
 import OrientadoresStories from '@/components/OrientadoresStories';
-import LatestNewsBanner from '@/components/LatestNewsBanner';
 import Layout from '@/components/Layout';
 import { SlidersHorizontal, X, Crown } from 'lucide-react';
 

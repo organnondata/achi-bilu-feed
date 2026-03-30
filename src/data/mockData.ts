@@ -549,6 +549,60 @@ export const orientadorPosts: OrientadorPost[] = [
   },
 ];
 
+// News posts for the feed
+import zigurats from '@/assets/zigurats.jpg';
+import corguinhos from '@/assets/corguinhos.avif';
+import radioTopFm from '@/assets/radio_top_fm.png';
+
+export interface NewsPostData {
+  id: string;
+  title: string;
+  content: string;
+  image: string;
+  createdAt: string;
+  likes: number;
+  liked?: boolean;
+  comments: Comment[];
+}
+
+export const newsPosts: NewsPostData[] = [
+  {
+    id: 'news1',
+    title: 'Fendas Descobertas em Corguínhos',
+    content: 'Durante trabalhos de pesquisa na região de Corguínhos, foram descobertas novas fendas e cavernas que revelam formações geológicas inéditas. A equipe Dakila segue investigando o local e compartilhando as descobertas com a comunidade científica.',
+    image: corguinhos,
+    createdAt: '2025-03-28',
+    likes: 134,
+    comments: [
+      { id: 'nc1', userId: 'u2', userName: 'Maria Silva', userAvatar: users[1].avatar, text: 'Incrível descoberta!', createdAt: '2025-03-28' },
+      { id: 'nc2', userId: 'u3', userName: 'José Oliveira', userAvatar: users[2].avatar, text: 'Dakila sempre inovando nas pesquisas!', createdAt: '2025-03-28' },
+    ],
+  },
+  {
+    id: 'news2',
+    title: 'Centro Zigurats – Treinamento Internacional',
+    content: 'O Centro de Treinamento Zigurats é referência em preparação para catástrofes naturais, atendendo mais de 21 países. A estrutura conta com instalações de pesquisa e desenvolvimento reconhecidas internacionalmente pela comunidade Dakila.',
+    image: zigurats,
+    createdAt: '2025-03-27',
+    likes: 198,
+    comments: [
+      { id: 'nc3', userId: 'u5', userName: 'Roberto Santos', userAvatar: users[4].avatar, text: 'Orgulho do Ecossistema Dakila!', createdAt: '2025-03-27' },
+    ],
+  },
+  {
+    id: 'news3',
+    title: 'Sistema Raio Diamante e Rádio Top Campo Grande FM',
+    content: 'O Ecossistema Dakila lançou o Sistema Raio Diamante e agora conta com a emissora Top Campo Grande FM. Acompanhe as novidades, programação ao vivo e conteúdos exclusivos diretamente pela plataforma Bilu.',
+    image: radioTopFm,
+    createdAt: '2025-03-26',
+    likes: 156,
+    comments: [
+      { id: 'nc4', userId: 'u1', userName: 'Carlos Mendes', userAvatar: users[0].avatar, text: 'Agora sim, temos tudo em um só lugar!', createdAt: '2025-03-26' },
+      { id: 'nc5', userId: 'u4', userName: 'Ana Ferreira', userAvatar: users[3].avatar, text: 'Já estou ouvindo a rádio! Top demais!', createdAt: '2025-03-26' },
+    ],
+  },
+];
+
 export const chatConversations: ChatConversation[] = [
   {
     id: 'chat1', adId: 'a1', adTitle: 'Caminhonete S10 2018 Diesel',
