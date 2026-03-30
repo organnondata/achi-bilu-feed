@@ -33,6 +33,7 @@ const newsSlides = [
 const SEEN_KEY = 'bilu_dakila_story_seen';
 
 const DakilaOfficialStory = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [seen, setSeen] = useState(() => localStorage.getItem(SEEN_KEY) === 'true');
