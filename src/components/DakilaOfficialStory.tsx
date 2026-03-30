@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import fundador from '@/assets/fundador.png';
+import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 import corguinhos from '@/assets/corguinhos.avif';
 import zigurats from '@/assets/zigurats.jpg';
 import amazonPesquisa from '@/assets/amazon_pesquisa.avif';
