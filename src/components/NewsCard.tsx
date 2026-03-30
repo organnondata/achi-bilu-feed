@@ -1,8 +1,10 @@
-import { Heart, MessageSquare, Share2, Newspaper } from 'lucide-react';
+import { Heart, MessageSquare, Share2 } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CommentsSection from './CommentsSection';
 import ShareModal from './ShareModal';
 import { Comment } from '@/data/mockData';
+import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 
 export interface NewsPost {
   id: string;
