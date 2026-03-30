@@ -64,7 +64,7 @@ const OrientadoresStories = () => {
                       <img
                         src={o.avatar}
                         alt={o.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-top"
                         onError={(e) => {
                           e.currentTarget.style.display = 'none';
                           e.currentTarget.nextElementSibling?.classList.remove('hidden');

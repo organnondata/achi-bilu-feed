@@ -35,7 +35,7 @@ const OrientadorProfile = () => {
         <div className="bg-card rounded-xl overflow-hidden feed-card-shadow mb-4">
           <div className="h-24 bg-gradient-to-r from-primary to-primary/70" />
           <div className="px-4 pb-4 -mt-10">
-            <img src={orientador.avatar} alt={orientador.name} className="w-24 h-24 rounded-full object-cover border-4 border-card mb-2" />
+            <img src={orientador.avatar} alt={orientador.name} className="w-24 h-24 rounded-full object-cover object-top border-4 border-card mb-2" />
             <h2 className="text-xl font-bold flex items-center gap-2">
               {orientador.name}
               <BadgeCheck size={20} className="text-secondary" />
@@ -170,7 +170,7 @@ const OrientadorPostCard = ({ post, orientador }: { post: any; orientador: any }
       <div className="bg-card rounded-xl overflow-hidden feed-card-shadow">
         {/* Author header */}
         <div className="flex items-center gap-3 p-4 pb-2">
-          <img src={orientador.avatar} alt={orientador.name} className="w-10 h-10 rounded-full object-cover" />
+          <img src={orientador.avatar} alt={orientador.name} className="w-10 h-10 rounded-full object-cover object-top" />
           <div className="flex-1">
             <p className="font-semibold text-sm flex items-center gap-1">
               {orientador.name}
