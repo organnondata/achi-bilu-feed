@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import fundador from '@/assets/fundador.png';
+import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 import corguinhos from '@/assets/corguinhos.avif';
 import zigurats from '@/assets/zigurats.jpg';
 import amazonPesquisa from '@/assets/amazon_pesquisa.avif';
@@ -62,8 +62,8 @@ const DakilaOfficialStory = () => {
           <div className={`w-[68px] h-[68px] rounded-full p-[3px] ${
             seen ? 'bg-muted' : 'bg-gradient-to-br from-amber-500 via-primary to-emerald-500'
           }`}>
-            <div className="w-full h-full rounded-full overflow-hidden border-2 border-card bg-primary flex items-center justify-center">
-              <img src={fundador} alt="Dakila News" className="w-full h-full object-cover object-top" />
+            <div className="w-full h-full rounded-full overflow-hidden border-2 border-card bg-foreground flex items-center justify-center">
+              <img src={dakilaNewsIcon} alt="Dakila News" className="w-full h-full object-contain p-1" />
             </div>
           </div>
           <div className="absolute -bottom-0.5 -right-0.5 bg-amber-500 rounded-full p-0.5">
@@ -94,7 +94,7 @@ const DakilaOfficialStory = () => {
             {/* Header */}
             <div className="absolute top-6 left-0 right-0 z-10 flex items-center gap-3 px-4">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/50">
-                <img src={fundador} alt="Dakila" className="w-full h-full object-cover object-top" />
+                <img src={dakilaNewsIcon} alt="Dakila" className="w-full h-full object-contain p-1" />
               </div>
               <div className="flex-1">
                 <p className="text-white font-bold text-sm">Dakila Pesquisas – Notícias</p>
