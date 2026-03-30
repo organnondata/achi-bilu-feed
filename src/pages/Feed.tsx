@@ -203,9 +203,14 @@ const Feed = () => {
               <FeedCard key={ad.id} ad={ad} />
             ))
           ) : (
-            filteredOrientadorPosts.map(post => (
-              <OrientadorCard key={post.id} post={post} />
-            ))
+            <>
+              {newsPosts.map(post => (
+                <NewsCard key={post.id} post={post} />
+              ))}
+              {filteredOrientadorPosts.map(post => (
+                <OrientadorCard key={post.id} post={post} />
+              ))}
+            </>
           )}
           {filtered.length === 0 && mode === 'marketplace' && (
             <div className="text-center py-16 text-muted-foreground">
