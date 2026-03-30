@@ -1,3 +1,5 @@
+import fundadorImg from '@/assets/fundador.png';
+
 export interface User {
   id: string;
   name: string;
