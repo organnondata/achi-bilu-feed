@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import { Radio, Music, Clock, ExternalLink, Volume2 } from 'lucide-react';
+import radioTopFm from '@/assets/radio_top_fm.png';
 
 const schedule = [
   { time: '06:00 – 09:00', show: 'Bom Dia Campo Grande', host: 'Equipe TOP FM' },
