@@ -30,7 +30,7 @@ const ativos: AtivoItem[] = [
   {
     id: 'at3', name: 'Conta Corrente BDM',
     description: 'Abra sua conta corrente BDM e participe do ecossistema de moeda complementar.',
-    image: 'https://images.unsplash.com/photo-1553729459-afe8f2e2ed08?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop',
     type: 'ativo-bdm', badge: 'Ativo BDM',
   },
   {
@@ -48,7 +48,7 @@ const ativos: AtivoItem[] = [
   {
     id: 'at6', name: 'Creme Facial Anti-idade Dakila',
     description: 'Creme facial premium com ingredientes naturais exclusivos da linha Dakila.',
-    image: 'https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop',
     type: 'produto', price: 'R$ 79,00', badge: 'Ativo Oficial Dakila',
   },
   {

@@ -219,7 +219,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a7', title: 'Honda CG 160 Titan 2022',
     description: 'Moto em excelente estado, baixa quilometragem. Único dono.',
-    price: 14500, images: ['https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=600&fit=crop'],
+    price: 14500, images: ['https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=800&h=600&fit=crop'],
     category: 'vehicles', type: 'Moto', condition: 'Usado',
     city: 'Uberaba', state: 'MG', author: users[3], createdAt: '2025-02-19',
     featured: false, likes: 15, comments: [mockComments[0]],
@@ -245,7 +245,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a10', title: 'Colar de Pedra Ametista Natural',
     description: 'Colar artesanal com pedra ametista natural polida. Cordão de couro legítimo.',
-    price: 85, images: ['https://images.unsplash.com/photo-1515562141589-67f0d569b6fc?w=800&h=600&fit=crop'],
+    price: 85, images: ['https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&h=600&fit=crop'],
     category: 'products', type: 'Colares e Pedras', condition: 'Novo',
     city: 'Uberlândia', state: 'MG', author: users[1], createdAt: '2025-02-25',
     featured: false, likes: 21, comments: [],
@@ -337,7 +337,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a21', title: 'Caminhão 3/4 Volkswagen 2019',
     description: 'Caminhão VW Delivery em excelente estado. Baú refrigerado incluso.',
-    price: 195000, images: ['https://images.unsplash.com/photo-1601584115197-04eefb3af4a4?w=800&h=600&fit=crop'],
+    price: 195000, images: ['https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=800&h=600&fit=crop'],
     category: 'vehicles', type: 'Maquinário', condition: 'Usado',
     city: 'Uberaba', state: 'MG', author: users[1], createdAt: '2025-02-14',
     featured: false, likes: 9, comments: [],
@@ -345,7 +345,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a22', title: 'Creme Facial Dakila Anti-idade',
     description: 'Creme facial com ingredientes naturais. Hidratação profunda e ação anti-idade.',
-    price: 79, images: ['https://images.unsplash.com/photo-1570194065650-d99fb4b38b17?w=800&h=600&fit=crop'],
+    price: 79, images: ['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=600&fit=crop'],
     category: 'products', type: 'Cosméticos Dakila', condition: 'Novo',
     city: 'Uberlândia', state: 'MG', author: users[4], createdAt: '2025-02-13',
     featured: false, likes: 27, comments: [],
@@ -418,7 +418,7 @@ export const orientadorPosts: OrientadorPost[] = [
     orientadorRole: 'Líder de Expansão',
     title: 'Expansão BDM - Novos Estados',
     content: 'O BDM Marketplace agora está presente em 10 estados brasileiros! Em breve, mais regiões serão alcançadas.',
-    image: 'https://images.unsplash.com/photo-1553729459-afe8f2e2ed08?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop',
     createdAt: '2025-02-25', likes: 54,
     comments: [
       { id: 'oc3', userId: 'u3', userName: 'José Oliveira', userAvatar: users[2].avatar, text: 'Quando chega em Ribeirão Preto?', createdAt: '2025-02-25' },
