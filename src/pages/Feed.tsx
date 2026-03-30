@@ -5,6 +5,7 @@ import FeedCard from '@/components/FeedCard';
 import OrientadorCard from '@/components/OrientadorCard';
 import PremiumBanner from '@/components/PremiumBanner';
 import OrientadoresStories from '@/components/OrientadoresStories';
+import LatestNewsBanner from '@/components/LatestNewsBanner';
 import Layout from '@/components/Layout';
 import { SlidersHorizontal, X, Crown } from 'lucide-react';
 
