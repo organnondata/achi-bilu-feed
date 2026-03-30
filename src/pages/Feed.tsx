@@ -192,6 +192,8 @@ const Feed = () => {
             socialFeed.map(item =>
               item.type === 'ad' ? (
                 <FeedCard key={item.data.id} ad={item.data} />
+              ) : item.type === 'news' ? (
+                <NewsCard key={item.data.id} post={item.data} />
               ) : (
                 <OrientadorCard key={item.data.id} post={item.data} />
               )
