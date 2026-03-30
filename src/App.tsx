@@ -24,6 +24,7 @@ import Orientadores from "./pages/Orientadores";
 import Premium from "./pages/Premium";
 import AtivosDakila from "./pages/AtivosDakila";
 import SaibaMaisBDM from "./pages/SaibaMaisBDM";
+import RadioPage from "./pages/RadioPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
