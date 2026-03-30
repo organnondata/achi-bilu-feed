@@ -94,7 +94,7 @@ const DakilaOfficialStory = () => {
             {/* Header */}
             <div className="absolute top-6 left-0 right-0 z-10 flex items-center gap-3 px-4">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-white/50">
-                <img src={fundador} alt="Dakila" className="w-full h-full object-cover object-top" />
+                <img src={dakilaNewsIcon} alt="Dakila" className="w-full h-full object-contain p-1" />
               </div>
               <div className="flex-1">
                 <p className="text-white font-bold text-sm">Dakila Pesquisas – Notícias</p>
