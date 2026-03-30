@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BadgeCheck, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import dakilaNewsIcon from '@/assets/dakila_news_icon.png';
 import corguinhos from '@/assets/corguinhos.avif';
