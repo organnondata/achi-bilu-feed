@@ -337,7 +337,7 @@ export const announcements: Announcement[] = [
   {
     id: 'a21', title: 'Caminhão 3/4 Volkswagen 2019',
     description: 'Caminhão VW Delivery em excelente estado. Baú refrigerado incluso.',
-    price: 195000, images: ['https://images.unsplash.com/photo-1601584115197-04eefb3af4a4?w=800&h=600&fit=crop'],
+    price: 195000, images: ['https://images.unsplash.com/photo-1592838064575-70ed626d3a0e?w=800&h=600&fit=crop'],
     category: 'vehicles', type: 'Maquinário', condition: 'Usado',
     city: 'Uberaba', state: 'MG', author: users[1], createdAt: '2025-02-14',
     featured: false, likes: 9, comments: [],
