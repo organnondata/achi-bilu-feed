@@ -397,8 +397,8 @@ export const orientadores: Orientador[] = [
 
 export const orientadorPosts: OrientadorPost[] = [
   {
-    id: 'op1', orientadorId: 'o2', orientadorName: 'Urandir',
-    orientadorAvatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&fit=crop&crop=face',
+    id: 'op1', orientadorId: 'o2', orientadorName: 'Urandir Fernandes',
+    orientadorAvatar: '/src/assets/fundador.png',
     orientadorRole: 'Fundador BDM',
     title: 'Novidades sobre o Projeto Dakila 2025',
     content: 'Estamos com grandes novidades para 2025! O projeto Dakila está expandindo para novas regiões e lançando produtos exclusivos.',
