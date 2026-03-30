@@ -418,7 +418,7 @@ export const orientadorPosts: OrientadorPost[] = [
     orientadorRole: 'Líder de Expansão',
     title: 'Expansão BDM - Novos Estados',
     content: 'O BDM Marketplace agora está presente em 10 estados brasileiros! Em breve, mais regiões serão alcançadas.',
-    image: 'https://images.unsplash.com/photo-1553729459-afe8f2e2ed08?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=600&fit=crop',
     createdAt: '2025-02-25', likes: 54,
     comments: [
       { id: 'oc3', userId: 'u3', userName: 'José Oliveira', userAvatar: users[2].avatar, text: 'Quando chega em Ribeirão Preto?', createdAt: '2025-02-25' },
