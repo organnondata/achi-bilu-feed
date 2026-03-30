@@ -62,7 +62,7 @@ const DakilaOfficialStory = () => {
           <div className={`w-[68px] h-[68px] rounded-full p-[3px] ${
             seen ? 'bg-muted' : 'bg-gradient-to-br from-amber-500 via-primary to-emerald-500'
           }`}>
-            <div className="w-full h-full rounded-full overflow-hidden border-2 border-card bg-primary flex items-center justify-center">
+            <div className="w-full h-full rounded-full overflow-hidden border-2 border-card bg-foreground flex items-center justify-center">
               <img src={dakilaNewsIcon} alt="Dakila News" className="w-full h-full object-contain p-1" />
             </div>
           </div>
