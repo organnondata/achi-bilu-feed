@@ -128,16 +128,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
               </button>
             );
           })}
-          {/* Ativos Dakila mobile */}
-          <button
-            onClick={() => navigate('/ativos')}
-            className={`flex flex-col items-center gap-0.5 min-w-[52px] min-h-touch p-1 rounded-lg transition-colors ${
-              location.pathname === '/ativos' ? 'text-bdm-gold' : 'text-muted-foreground'
-            }`}
-          >
-            <Gem size={22} strokeWidth={location.pathname === '/ativos' ? 2.5 : 2} />
-            <span className="text-[10px] font-bold">Ativos</span>
-          </button>
+          <MobileNavMenu />
         </div>
       </nav>
 
