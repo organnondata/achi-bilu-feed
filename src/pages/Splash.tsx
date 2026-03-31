@@ -21,11 +21,9 @@ const Splash = () => {
 
       {/* Institutional top bar */}
       <div className="relative z-10 pt-8 flex flex-col items-center">
-        <img src={ecossistemaLogo} alt="Ecossistema Dakila" className="h-16 sm:h-20 object-contain drop-shadow-lg" />
-        <div className="w-24 h-1 bg-bdm-gold mx-auto mt-3 rounded-full shadow-lg" />
-        <p className="text-primary-foreground/60 text-sm mt-2 tracking-widest uppercase">
-          Comunidade · Expansão · Valores
-        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground tracking-wide drop-shadow-lg uppercase">
+          Ecossistema Dakila
+        </h2>
       </div>
 
       {/* Hero center */}
