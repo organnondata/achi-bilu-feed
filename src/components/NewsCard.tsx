@@ -48,12 +48,23 @@ const NewsCard = ({ post }: { post: NewsPost }) => {
         </span>
       </div>
 
-      {/* Image */}
-      <img src={post.image} alt={post.title} className="w-full h-56 sm:h-64 object-cover" loading="lazy" />
+      {/* Image - clickable for radio post */}
+      <img
+        src={post.image}
+        alt={post.title}
+        className={`w-full h-56 sm:h-64 object-cover ${post.id === 'news3' ? 'cursor-pointer' : ''}`}
+        loading="lazy"
+        onClick={() => post.id === 'news3' && navigate('/radio')}
+      />
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="text-lg font-bold text-foreground mb-2">{post.title}</h3>
+        <h3
+          className={`text-lg font-bold text-foreground mb-2 ${post.id === 'news3' ? 'cursor-pointer hover:text-primary transition-colors' : ''}`}
+          onClick={() => post.id === 'news3' && navigate('/radio')}
+        >
+          {post.title}
+        </h3>
         <p className="text-base text-muted-foreground leading-relaxed mb-3">{post.content}</p>
 
         {/* Counters */}
